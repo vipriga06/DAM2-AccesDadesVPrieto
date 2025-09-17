@@ -18,17 +18,20 @@ public class PR111Files {
         Path carpeta = Paths.get(camiFitxer, "myFiles");
 
         try {
+            // Crear la carpeta si no existeix
             if (Files.notExists(carpeta)) {
                 Files.createDirectories(carpeta);
                 System.out.println("Carpeta creada correctament: " + carpeta);
             }
 
+            // Crear file1.txt si no existeix
             Path file1 = carpeta.resolve("file1.txt");
             if (Files.notExists(file1)) {
                 Files.createFile(file1);
                 System.out.println("Arxiu creat: " + file1.getFileName());
             }
 
+            // Crear file2.txt només si no existeix file2.txt ni renamedFile.txt
             Path file2 = carpeta.resolve("file2.txt");
             Path renamedFile = carpeta.resolve("renamedFile.txt");
             if (Files.notExists(file2) && Files.notExists(renamedFile)) {
@@ -36,18 +39,22 @@ public class PR111Files {
                 System.out.println("Arxiu creat: " + file2.getFileName());
             }
 
+            // Renombrar file2.txt a renamedFile.txt si existeix file2.txt
             if (Files.exists(file2) && Files.notExists(renamedFile)) {
                 Files.move(file2, renamedFile, StandardCopyOption.REPLACE_EXISTING);
                 System.out.println("Arxiu " + file2.getFileName() + " renombrat a " + renamedFile.getFileName());
             }
 
+            // Mostrar llistat d'arxius
             mostrarArxius(carpeta);
 
+            // Eliminar file1.txt si existeix
             if (Files.exists(file1)) {
                 Files.delete(file1);
                 System.out.println("Arxiu eliminat: " + file1.getFileName());
             }
 
+            // Tornar a mostrar llistat
             mostrarArxius(carpeta);
 
         } catch (IOException e) {
