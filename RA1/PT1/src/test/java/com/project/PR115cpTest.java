@@ -1,8 +1,5 @@
 package com.project;
 
-import org.junit.jupiter.api.Test;
-import org.junit.jupiter.api.io.TempDir;
-
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileReader;
@@ -13,7 +10,11 @@ import java.nio.file.Path;
 import java.util.ArrayList;
 import java.util.List;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertFalse;
+import static org.junit.jupiter.api.Assertions.assertTrue;
+import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.io.TempDir;
 
 class PR115cpTest {
 
@@ -100,7 +101,7 @@ class PR115cpTest {
         
 
     @Test
-    void testArxiuNoExisteix() {
+    void testArxiuNoExisteix() throws IOException {
         // Definir la ruta d'un fitxer origen que no existeix
         File fitxerInexistent = new File(directoriTemporal.toFile(), "inexistent.txt");
 
