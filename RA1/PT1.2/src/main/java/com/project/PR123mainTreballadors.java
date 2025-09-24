@@ -1,14 +1,13 @@
 package com.project;
 
+import java.util.List;
+
 import com.project.excepcions.IOFitxerExcepcio;
 import com.project.utilitats.UtilsCSV;
 
-import java.util.List;
-import java.util.Scanner;
-
 public class PR123mainTreballadors {
     private String filePath = System.getProperty("user.dir") + "/data/PR123treballadors.csv";
-    private Scanner scanner = new Scanner(System.in);
+    private java.util.Scanner scanner = new java.util.Scanner(System.in);
 
     // Getters i setters per a filePath
     public String getFilePath() {
@@ -47,7 +46,6 @@ public class PR123mainTreballadors {
         }
     }
 
-    // Mètode que mostra el menú
     private void mostrarMenu() {
         System.out.println("\nMenú de Gestió de Treballadors");
         System.out.println("1. Mostra tots els treballadors");
@@ -56,35 +54,61 @@ public class PR123mainTreballadors {
         System.out.print("Selecciona una opció: ");
     }
 
-    // Mètode per mostrar els treballadors llegint el fitxer CSV
     public void mostrarTreballadors() throws IOFitxerExcepcio {
-        // *************** CODI PRÀCTICA **********************/
+        List<String> treballadors = llegirFitxerCSV();
+        treballadors.forEach(System.out::println);
     }
 
-    // Mètode per modificar un treballador (interactiu)
     public void modificarTreballadorInteractiu() throws IOFitxerExcepcio {
-        // Demanar l'ID del treballador
         System.out.print("\nIntrodueix l'ID del treballador que vols modificar: ");
         String id = scanner.nextLine();
 
-        // Demanar quina dada vols modificar
         System.out.print("Quina dada vols modificar (Nom, Cognom, Departament, Salari)? ");
         String columna = scanner.nextLine();
 
-        // Demanar el nou valor
         System.out.print("Introdueix el nou valor per a " + columna + ": ");
         String nouValor = scanner.nextLine();
 
-        // Modificar treballador
         modificarTreballador(id, columna, nouValor);
     }
 
-    // Mètode que modifica treballador (per a tests i usuaris) llegint i escrivint sobre disc
     public void modificarTreballador(String id, String columna, String nouValor) throws IOFitxerExcepcio {
-        // *************** CODI PRÀCTICA **********************/
+        List<String> treballadors = llegirFitxerCSV();
+        if (treballadors.isEmpty()) return;
+
+        // Obtenir l'índex de la columna
+        String[] headers = UtilsCSV.obtenirArrayLinia(treballadors.get(0));
+        int indexColumna = -1;
+        for (int i = 0; i < headers.length; i++) {
+            if (headers[i].equalsIgnoreCase(columna)) {
+                indexColumna = i;
+                break;
+            }
+        }
+        if (indexColumna == -1) {
+            throw new IOFitxerExcepcio("Columna no trobada: " + columna);
+        }
+
+        // Buscar línia amb l'ID corresponent i modificar-la
+        boolean trobat = false;
+        for (int i = 1; i < treballadors.size(); i++) {
+            String[] dades = UtilsCSV.obtenirArrayLinia(treballadors.get(i));
+            if (dades[0].equals(id)) {
+                dades[indexColumna] = nouValor;
+                treballadors.set(i, String.join(",", dades));
+                trobat = true;
+                break;
+            }
+        }
+
+        if (!trobat) {
+            throw new IOFitxerExcepcio("Treballador amb Id " + id + " no trobat.");
+        }
+
+        // Escriure de nou el fitxer CSV
+        escriureFitxerCSV(treballadors);
     }
 
-    // Encapsulació de llegir el fitxer CSV
     private List<String> llegirFitxerCSV() throws IOFitxerExcepcio {
         List<String> treballadorsCSV = UtilsCSV.llegir(filePath);
         if (treballadorsCSV == null) {
@@ -93,7 +117,6 @@ public class PR123mainTreballadors {
         return treballadorsCSV;
     }
 
-    // Encapsulació d'escriure el fitxer CSV
     private void escriureFitxerCSV(List<String> treballadorsCSV) throws IOFitxerExcepcio {
         try {
             UtilsCSV.escriure(filePath, treballadorsCSV);
@@ -102,9 +125,8 @@ public class PR123mainTreballadors {
         }
     }
 
-    // Mètode main
     public static void main(String[] args) {
         PR123mainTreballadors programa = new PR123mainTreballadors();
         programa.iniciar();
-    }    
+    }
 }
