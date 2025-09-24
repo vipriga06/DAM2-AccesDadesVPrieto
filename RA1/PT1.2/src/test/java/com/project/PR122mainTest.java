@@ -1,15 +1,19 @@
 package com.project;
 
-import org.junit.jupiter.api.*;
+import java.io.File;
+import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
+
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertFalse;
+import static org.junit.jupiter.api.Assertions.assertThrows;
+import static org.junit.jupiter.api.Assertions.assertTrue;
+import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.io.TempDir;
 
-import java.io.*;
-import java.util.List;
-import java.util.ArrayList;
 import com.project.excepcions.IOFitxerExcepcio;
 import com.project.objectes.PR122persona;
-
-import static org.junit.jupiter.api.Assertions.*;
 
 class PR122mainTest {
 
