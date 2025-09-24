@@ -1,38 +1,38 @@
 package com.project;
 
+import java.io.IOException;
+import java.nio.charset.StandardCharsets;
+import java.nio.file.Files;
+import java.nio.file.Path;
+
 public class PR113sobreescriu {
 
     public static void main(String[] args) {
         // Definir el camí del fitxer dins del directori "data"
         String camiFitxer = System.getProperty("user.dir") + "/data/frasesMatrix.txt";
-
-        // Crida al mètode que escriu les frases sobreescrivint el fitxer
         escriureFrases(camiFitxer);
     }
 
-    // Mètode que escriu les frases sobreescrivint el fitxer amb UTF-8 i línia en blanc final
+    // Mètode que sobreescriu el fitxer amb exactament dues frases
+    // i una única línia en blanc final
     public static void escriureFrases(String camiFitxer) {
         String[] frases = {
-            "Matrix és a tot arreu.",
-            "Segueix el conill blanc.",
-            "Pastilla vermella o blava?",
-            "Benvingut al món real.",
-            "No hi ha cullera."
+                "I can only show you the door",
+                "You're the one that has to walk through it"
         };
 
-        try (java.io.BufferedWriter writer = java.nio.file.Files.newBufferedWriter(
-                java.nio.file.Paths.get(camiFitxer),
-                java.nio.charset.StandardCharsets.UTF_8,
-                java.nio.file.StandardOpenOption.CREATE,
-                java.nio.file.StandardOpenOption.TRUNCATE_EXISTING)) {
-
+        try {
+            // Combinar les frases en un contingut únic amb salts de línia
+            StringBuilder contingut = new StringBuilder();
             for (String frase : frases) {
-                writer.write(frase);
-                writer.newLine();
+                contingut.append(frase).append("\n");
             }
-            writer.newLine(); // línia en blanc final
+            contingut.append("\n"); // només una línia en blanc final
 
-        } catch (java.io.IOException e) {
+            // Escriure tot el contingut al fitxer, sobrescrivint
+            Files.writeString(Path.of(camiFitxer), contingut.toString(), StandardCharsets.UTF_8);
+
+        } catch (IOException e) {
             System.err.println("Error escrivint al fitxer: " + e.getMessage());
         }
     }
