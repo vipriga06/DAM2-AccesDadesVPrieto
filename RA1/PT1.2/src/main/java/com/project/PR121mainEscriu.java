@@ -3,6 +3,7 @@ package com.project;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.ObjectOutputStream;
+
 import com.project.excepcions.IOFitxerExcepcio;
 import com.project.objectes.PR121hashmap;
 
@@ -17,6 +18,7 @@ public class PR121mainEscriu {
 
         try {
             serialitzarHashMap(hashMap);
+            System.out.println("HashMap serialitzat correctament.");
         } catch (IOFitxerExcepcio e) {
             System.err.println("Error al desar l'arxiu: " + e.getMessage());
         }
@@ -33,6 +35,10 @@ public class PR121mainEscriu {
     }
 
     public static void serialitzarHashMap(PR121hashmap hashMap) throws IOFitxerExcepcio {
-        // *************** CODI PRÀCTICA **********************/
+        try (ObjectOutputStream oos = new ObjectOutputStream(new FileOutputStream(filePath))) {
+            oos.writeObject(hashMap);
+        } catch (IOException e) {
+            throw new IOFitxerExcepcio("Error en serialitzar l'objecte HashMap", e);
+        }
     }
 }
