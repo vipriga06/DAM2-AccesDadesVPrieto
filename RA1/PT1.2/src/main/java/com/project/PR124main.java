@@ -160,7 +160,7 @@ public class PR124main {
             String nom = llegirNom(raf);
             raf.seek(pos + GRADE_POS);
             float nota = raf.readFloat();
-            System.out.printf("Registre: %d, Nom: %s, Nota: %.1f%n", registre, nom, nota);
+            System.out.printf(java.util.Locale.US, "Registre: %d, Nom: %s, Nota: %.1f%n", registre, nom, nota);
         }
     }
 
