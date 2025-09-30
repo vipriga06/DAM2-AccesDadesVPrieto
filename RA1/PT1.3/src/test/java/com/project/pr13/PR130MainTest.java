@@ -1,5 +1,11 @@
 package com.project.pr13;
 
+import java.io.File;
+import java.io.FileWriter;
+import java.io.IOException;
+
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNotNull;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.io.TempDir;
@@ -7,13 +13,6 @@ import org.w3c.dom.Document;
 import org.w3c.dom.NodeList;
 
 import com.project.pr13.format.PersonaFormatter;
-
-import java.io.File;
-import java.io.FileWriter;
-import java.io.IOException;
-
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertNotNull;
 
 class PR130MainTest {
 
@@ -42,7 +41,7 @@ class PR130MainTest {
     private File tempFile;
 
     @BeforeEach
-    void setup() throws IOException {
+    void setup() throws IOException, Exception {
         // Crea un fitxer temporal "persones.xml" dins del directori temporal creat per JUnit
         tempFile = new File(tempDir, "persones.xml");
         try (FileWriter writer = new FileWriter(tempFile)) {
