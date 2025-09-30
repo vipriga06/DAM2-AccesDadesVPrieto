@@ -20,22 +20,14 @@ public class PR13Main {
             in.nextLine(); // Consume newline left-over
 
             switch (opcio) {
-                case 1:
-                    PR130Main.main(args);
-                    break;
-                case 2:
-                    PR131Main.main(args);
-                    break;
-                case 3:
-                    PR132Main.main(args);
-                    break;
-                case 100:
+                case 1 -> PR130Main.main(args);
+                case 2 -> PR131Main.main(args);
+                case 3 -> PR132Main.main(args);
+                case 100 -> {
                     running = false;
                     System.out.println("Sortint...");
-                    break;
-                default:
-                    System.out.println("Opció no vàlida.");
-                    break;
+                }
+                default -> System.out.println("Opció no vàlida.");
             }
         }
         in.close();

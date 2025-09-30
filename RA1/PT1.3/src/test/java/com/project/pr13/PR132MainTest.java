@@ -1,9 +1,5 @@
 package com.project.pr13;
 
-import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Test;
-import org.junit.jupiter.api.io.TempDir;
-
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
@@ -12,6 +8,9 @@ import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.io.TempDir;
 
 class PR132MainTest {
 
@@ -47,7 +46,7 @@ class PR132MainTest {
     private PR132Main app;
 
     @BeforeEach
-    void setup() throws IOException {
+    void setup() throws IOException, Exception {
         // Crear el fitxer temporal "cursos.xml" dins del directori temporal
         File tempFile = new File(tempDir, "cursos.xml");
         tempFilePath = tempFile.toPath();

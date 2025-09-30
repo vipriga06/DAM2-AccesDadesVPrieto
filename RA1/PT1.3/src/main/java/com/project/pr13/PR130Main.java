@@ -16,15 +16,40 @@ import com.project.pr13.format.PersonaFormatter;
 
 public class PR130Main {
 
-    private File directoriBase;
+    private File dataDir;
     private Document document;
     private XPath xpath;
 
-    // Constructor que rep el directori base on buscar els fitxers XML
-    public PR130Main(File directoriBase) throws Exception {
-        this.directoriBase = directoriBase;
+    // Constructor que rep el directori base on buscar el fitxer XML
+    public PR130Main(File dataDir) throws Exception {
+        this.dataDir = dataDir;
         XPathFactory xpathFactory = XPathFactory.newInstance();
         xpath = xpathFactory.newXPath();
+    }
+
+    // Mètode principal per executar la classe
+    public static void main(String[] args) {
+        try {
+            // Obtenir el directori de l'usuari i apuntar a la carpeta de dades
+            String userDir = System.getProperty("user.dir");
+            File dataDir = new File(userDir, "data/pr13");
+
+            // Crear una instància de la classe i processar el fitxer
+            PR130Main app = new PR130Main(dataDir);
+            app.processarFitxerXML("persones.xml");
+        } catch (Exception e) {
+            System.err.println("Hi ha hagut un error en inicialitzar l'aplicació.");
+            e.printStackTrace();
+        }
+    }
+
+    // Getter i setter per al directori base
+    public File getDataDir() {
+        return dataDir;
+    }
+
+    public void setDataDir(File dataDir) {
+        this.dataDir = dataDir;
     }
 
     // Mètode estàtic per parsejar un fitxer XML i retornar el Document
@@ -41,10 +66,10 @@ public class PR130Main {
         }
     }
 
-    // Mètode per processar un fitxer XML donat el seu nom (dins directoriBase)
+    // Mètode per processar un fitxer XML donat el seu nom (dins dataDir)
     public void processarFitxerXML(String nomFitxer) {
         try {
-            File fitxer = new File(directoriBase, nomFitxer);
+            File fitxer = new File(dataDir, nomFitxer);
             document = parseXML(fitxer);
             if (document == null) {
                 System.out.println("No s'ha pogut carregar el fitxer XML.");
@@ -67,17 +92,6 @@ public class PR130Main {
 
                 System.out.println(PersonaFormatter.formatarPersona(nom, cognom, edat, ciutat));
             }
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-    }
-
-    // Mètode main per proves manuals (opcional)
-    public static void main(String[] args) {
-        try {
-            File directori = new File("."); // Directori actual
-            PR130Main app = new PR130Main(directori);
-            app.processarFitxerXML("persones.xml");
         } catch (Exception e) {
             e.printStackTrace();
         }
