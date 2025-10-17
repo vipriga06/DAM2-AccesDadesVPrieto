@@ -1,12 +1,14 @@
-# Pràctica PR1.3 - Punt de partida #
+# Pràctica PR1.4 - Punt de partida #
 
-Aquest projecte correspon a la pràctica PR1.3 relacionada amb treball amb documents XML
+Aquest projecte correspon a la pràctica PR1.4 relacionada amb treball amb documents JSON
+
 
 ### Instruccions ###
 
 Primer posar en funcionament el servidor
 
 Després executar el client i comprovar com els càlculs obtenen resultat des del servidor
+
 
 ### Compilació i funcionament ###
 
@@ -19,29 +21,32 @@ mvn clean compile test package
 
 Per executar el projecte a Windows cal
 ```bash
-.\run.ps1 com.project.pr13.PR13Main
+.\run.ps1 com.project.pr14.PR14GestioLlibreriaJacksonMain
+...
 ```
 
 Per executar el projecte a Linux/macOS cal
 ```bash
-./run.sh com.project.pr13.PR13Main
+./run.sh com.project.pr14.PR14GestioLlibreriaJacksonMain
+...
 ```
 
 Per fer anar classes específiques amb main:
 ```bash
-.\run.ps1 com.project.pr13.PR130Main
-./run.sh com.project.pr13.PR130Main
+.\run.ps1 com.project.pr14.PR14GestioLlibreriaJacksonMain
+./run.sh com.project.pr14.PR14GestioLlibreriaJacksonMain
 ```
 
 Per executar sense usar script propi, directament amb maven:
 ```bash
-mvn exec:java "-Dexec.mainClass=com.project.pr13.PR13Main"
+mvn exec:java "-Dexec.mainClass=com.project.pr14.PR14GestioLlibreriaJacksonMain"
 ```
 
 Per executar, un cop generat l'artefacte .jar
 ```bash
-java -cp ./target/ams2-m0486-pr11-repo-ref-1.0.1.jar com.project.pr13.PR13Main
+java -cp ./target/ams2-m0486-pr11-repo-ref-1.0.1.jar com.project.pr14.PR14GestioLlibreriaJacksonMain
 ```
+
 
 ### Execució de tests ###
 Per executar, un cop generat l'artefacte .jar
@@ -60,6 +65,7 @@ mvn test -Dtest="*Arxiu*"
 # Tests específics de List i Scanner
 mvn test -Dtest="*List*,*Scanner*"
 ```
+
 
 ### Visual Studio Code: resseteig de l'entorn de programació Java ###
 
