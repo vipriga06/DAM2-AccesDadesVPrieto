@@ -1,7 +1,6 @@
 package com.project.pr14;
 
 import com.project.objectes.Llibre;
-
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.core.type.TypeReference;
 import java.io.File;
@@ -50,8 +49,17 @@ public class PR14GestioLlibreriaJacksonMain {
      * @return Llista de llibres o null si hi ha hagut un error en la lectura.
      */
     public List<Llibre> carregarLlibres() {
-        // *************** CODI PRÀCTICA **********************/
-        return null; // Substitueix pel teu
+        ObjectMapper mapper = new ObjectMapper();
+        try {
+            System.out.println("LLEGINT fitxer de llibres: " + dataFile.getAbsolutePath());
+            List<Llibre> llibres = mapper.readValue(dataFile, new TypeReference<List<Llibre>>() {});
+            System.out.println("S'han carregat " + llibres.size() + " llibres.");
+            return llibres;
+        } catch (IOException e) {
+            System.out.println("Error llegint el fitxer de llibres.");
+            e.printStackTrace();
+            return null;
+        }
     }
 
     /**
@@ -62,7 +70,13 @@ public class PR14GestioLlibreriaJacksonMain {
      * @param nouAny Nou any de publicació.
      */
     public void modificarAnyPublicacio(List<Llibre> llibres, int id, int nouAny) {
-        // *************** CODI PRÀCTICA **********************/
+        for (Llibre llibre : llibres) {
+            if (llibre.getId() == id) {
+                System.out.println("MODIFICANT any del llibre amb id " + id + " de " + llibre.getAny() + " a " + nouAny);
+                llibre.setAny(nouAny);
+                break;
+            }
+        }
     }
 
     /**
@@ -72,7 +86,8 @@ public class PR14GestioLlibreriaJacksonMain {
      * @param nouLlibre Nou llibre a afegir.
      */
     public void afegirNouLlibre(List<Llibre> llibres, Llibre nouLlibre) {
-        // *************** CODI PRÀCTICA **********************/
+        llibres.add(nouLlibre);
+        System.out.println("AFEGINT nou llibre: " + nouLlibre.getTitol() + " (" + nouLlibre.getId() + ")");
     }
 
     /**
@@ -82,7 +97,15 @@ public class PR14GestioLlibreriaJacksonMain {
      * @param id Identificador del llibre a esborrar.
      */
     public void esborrarLlibre(List<Llibre> llibres, int id) {
-        // *************** CODI PRÀCTICA **********************/
+        Iterator<Llibre> iterator = llibres.iterator();
+        while (iterator.hasNext()) {
+            Llibre llibre = iterator.next();
+            if (llibre.getId() == id) {
+                System.out.println("ESBORRANT llibre amb id " + id + ": " + llibre.getTitol());
+                iterator.remove();
+                break;
+            }
+        }
     }
 
     /**
@@ -91,6 +114,14 @@ public class PR14GestioLlibreriaJacksonMain {
      * @param llibres Llista de llibres a guardar.
      */
     public void guardarLlibres(List<Llibre> llibres) {
-        // *************** CODI PRÀCTICA **********************/        
+        ObjectMapper mapper = new ObjectMapper();
+        File outputFile = new File(dataFile.getParent(), "llibres_output_jackson.json");
+        try {
+            mapper.writerWithDefaultPrettyPrinter().writeValue(outputFile, llibres);
+            System.out.println("GUARDANT llibres al fitxer: " + outputFile.getAbsolutePath());
+        } catch (IOException e) {
+            System.out.println("Error guardant el fitxer de llibres.");
+            e.printStackTrace();
+        }
     }
 }

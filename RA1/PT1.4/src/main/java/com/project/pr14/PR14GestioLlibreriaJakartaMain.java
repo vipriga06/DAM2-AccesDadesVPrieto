@@ -55,6 +55,7 @@ public class PR14GestioLlibreriaJakartaMain {
         try (InputStream is = Files.newInputStream(dataFile.toPath());
              JsonReader reader = Json.createReader(is)) {
 
+            System.out.println("LLEGINT fitxer de llibres: " + dataFile.getAbsolutePath());
             JsonArray jsonArray = reader.readArray();
             for (JsonValue jsonValue : jsonArray) {
                 JsonObject obj = jsonValue.asJsonObject();
@@ -64,8 +65,10 @@ public class PR14GestioLlibreriaJakartaMain {
                 int any = obj.getInt("any");
                 llibres.add(new Llibre(id, titol, autor, any));
             }
+            System.out.println("S'han carregat " + llibres.size() + " llibres.");
             return llibres;
         } catch (Exception e) {
+            System.out.println("Error llegint el fitxer de llibres.");
             e.printStackTrace();
             return null;
         }
@@ -81,6 +84,7 @@ public class PR14GestioLlibreriaJakartaMain {
     public void modificarAnyPublicacio(List<Llibre> llibres, int id, int nouAny) {
         for (Llibre llibre : llibres) {
             if (llibre.getId() == id) {
+                System.out.println("MODIFICANT any del llibre amb id " + id + " de " + llibre.getAny() + " a " + nouAny);
                 llibre.setAny(nouAny);
                 break;
             }
@@ -95,6 +99,7 @@ public class PR14GestioLlibreriaJakartaMain {
      */
     public void afegirNouLlibre(List<Llibre> llibres, Llibre nouLlibre) {
         llibres.add(nouLlibre);
+        System.out.println("AFEGINT nou llibre: " + nouLlibre.getTitol() + " (" + nouLlibre.getId() + ")");
     }
 
     /**
@@ -108,6 +113,7 @@ public class PR14GestioLlibreriaJakartaMain {
         while (iterator.hasNext()) {
             Llibre llibre = iterator.next();
             if (llibre.getId() == id) {
+                System.out.println("ESBORRANT llibre amb id " + id + ": " + llibre.getTitol());
                 iterator.remove();
                 break;
             }
@@ -135,7 +141,9 @@ public class PR14GestioLlibreriaJakartaMain {
         try (OutputStream os = Files.newOutputStream(Paths.get(outputFile.getPath()));
              JsonWriter writer = Json.createWriter(os)) {
             writer.writeArray(jsonArray);
+            System.out.println("GUARDANT llibres al fitxer: " + outputFile.getAbsolutePath());
         } catch (Exception e) {
+            System.out.println("Error guardant el fitxer de llibres.");
             e.printStackTrace();
         }
     }
