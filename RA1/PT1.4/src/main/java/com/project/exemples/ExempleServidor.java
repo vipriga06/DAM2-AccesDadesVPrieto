@@ -11,6 +11,11 @@ import jakarta.json.JsonWriter;
 import java.io.StringReader;
 import java.io.StringWriter;
 import java.nio.charset.StandardCharsets;
+import java.io.File;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 
 public class ExempleServidor {
 
@@ -30,6 +35,25 @@ public class ExempleServidor {
                             // Llegir tot el cos de la petició
                             String requestBody = new String(exchange.getInputStream().readAllBytes(), StandardCharsets.UTF_8);
                             System.out.println("Rebut JSON: " + requestBody);
+
+                            // NOVA PART: Desa la petició rebuda com a fitxer JSON
+                            try {
+                                // Crea el directori si no existeix
+                                File dir = new File("data/requests");
+                                if (!dir.exists()) {
+                                    dir.mkdirs();
+                                }
+                                // Nom únic amb data i hora
+                                String filename = "request_" + LocalDateTime.now().format(DateTimeFormatter.ofPattern("yyyyMMdd_HHmmss_SSS")) + ".json";
+                                File file = new File(dir, filename);
+                                try (FileWriter fw = new FileWriter(file)) {
+                                    fw.write(requestBody);
+                                }
+                                System.out.println("Petició desada a " + file.getAbsolutePath());
+                            } catch (IOException ex) {
+                                System.out.println("No s'ha pogut desar la petició a fitxer: " + ex.getMessage());
+                            }
+                            // Fi de la NOVA PART
 
                             // Convertir el JSON rebut en un objecte JsonObject
                             try (JsonReader jsonReader = Json.createReader(new StringReader(requestBody))) {
