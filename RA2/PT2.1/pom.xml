@@ -26,6 +26,8 @@
         <jackson.version>2.15.3</jackson.version>
         <javafx.version>17.0.6</javafx.version> <!-- Recomanat actualitzar a una versió més recent per a Java 17+ -->
         <junit.version>5.10.0</junit.version>
+        <slf4j.version>2.0.9</slf4j.version>
+        <logback.version>1.4.11</logback.version>
 
         <!-- Versions dels plugins -->
         <maven-compiler-plugin.version>3.11.0</maven-compiler-plugin.version>
@@ -90,6 +92,18 @@
             <artifactId>junit-jupiter</artifactId>
             <version>${junit.version}</version>
             <scope>test</scope>
+        </dependency>
+
+        <!-- Logging: SLF4J + Logback -->
+        <dependency>
+            <groupId>org.slf4j</groupId>
+            <artifactId>slf4j-api</artifactId>
+            <version>${slf4j.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>ch.qos.logback</groupId>
+            <artifactId>logback-classic</artifactId>
+            <version>${logback.version}</version>
         </dependency>
     </dependencies>
 
