@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 5.4//EN" "https://hibernate.org/dtd/hibernate-mapping-5.4.dtd">
+<hibernate-mapping package="com.project">
+    <class name="Ciutat" table="ciutat">
+        <id name="ciutatId" column="ciutat_id">
+            <generator class="native" />
+        </id>
+        <property name="nom" column="nom" length="100" not-null="true" />
+        <property name="pais" column="pais" length="100" not-null="true" />
+        <property name="poblacio" column="poblacio" not-null="true" />
+    </class>
+</hibernate-mapping>
