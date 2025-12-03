@@ -15,11 +15,9 @@ public class Ciutat implements Serializable {
 	private String pais;
 	private int poblacio;
 
-	// Relació lògica (no persistent) per tenir els ciutadans vinculats en memòria
 	private transient Set<Ciutada> ciutadans = new LinkedHashSet<>();
 
 	public Ciutat() {
-		// Required by Hibernate
 	}
 
 	public Ciutat(String nom, String pais, int poblacio) {

@@ -22,7 +22,6 @@ public final class Manager {
 	private static ServiceRegistry serviceRegistry;
 
 	private Manager() {
-		// Utility class
 	}
 
 	public static synchronized void createSessionFactory() {

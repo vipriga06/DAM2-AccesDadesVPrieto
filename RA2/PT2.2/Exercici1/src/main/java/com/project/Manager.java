@@ -22,7 +22,6 @@ public final class Manager {
 	private static EntityManagerFactory entityManagerFactory;
 
 	private Manager() {
-		// Utility class
 	}
 
 	public static synchronized void createSessionFactory() {
@@ -157,7 +156,7 @@ public final class Manager {
 		return execute(entityManager -> {
 			Ciutat ciutat = entityManager.find(Ciutat.class, ciutatId);
 			if (ciutat != null) {
-				ciutat.getCiutadans().size(); // Força la càrrega LAZY
+				ciutat.getCiutadans().size();
 			}
 			return ciutat;
 		});

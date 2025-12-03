@@ -11,10 +11,9 @@ public class Ciutada implements Serializable {
 	private String nom;
 	private String cognom;
 	private int edat;
-	private Long ciutatId; // Relació lògica amb Ciutat (per id)
+	private Long ciutatId;
 
 	public Ciutada() {
-		// Required by Hibernate
 	}
 
 	public Ciutada(String nom, String cognom, int edat) {

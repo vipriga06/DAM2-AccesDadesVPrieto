@@ -10,12 +10,10 @@ public class Main {
         Manager.createSessionFactory();
 
         try {
-            // CREATE - Creem tres ciutats
             Ciutat ciutat1 = Manager.addCiutat("Barcelona", "Espanya", 8020);
             Ciutat ciutat2 = Manager.addCiutat("Vancouver", "Canadà", 98661);
             Ciutat ciutat3 = Manager.addCiutat("Kyoto", "Japó", 5200461);
 
-            // CREATE - Creem dos ciutadans per ciutat
             List<Ciutada> ciutadans = Arrays.asList(
                 Manager.addCiutada("Jordi", "Serra", 34),
                 Manager.addCiutada("Maria", "Reverter", 30),
@@ -25,7 +23,6 @@ public class Main {
                 Manager.addCiutada("Keiko", "Tanaka", 40)
             );
 
-            // Assignem els ciutadans a cada ciutat segons la posició a la llista
             assignCitizensToCity(ciutat1, ciutadans.subList(0, 2));
             assignCitizensToCity(ciutat2, ciutadans.subList(2, 4));
             assignCitizensToCity(ciutat3, ciutadans.subList(4, 6));

@@ -38,7 +38,6 @@ public class Ciutada implements Serializable {
 	private Ciutat ciutat;
 
 	public Ciutada() {
-		// Required by JPA
 	}
 
 	public Ciutada(String nom, String cognom, int edat) {

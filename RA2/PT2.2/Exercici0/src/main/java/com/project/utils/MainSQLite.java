@@ -6,18 +6,12 @@ import java.sql.ResultSetMetaData;
 import java.sql.SQLException;
 import java.util.List;
 
-/*
- * Aquest exemple mostra les 
- * dades de SQLite quan hibernate
- * ja ha generat les taules.
- */
 public class MainSQLite {
 
     public static void main(String[] args) {
         String basePath = System.getProperty("user.dir") + "/data/";
         String filePath = basePath + "database.db";
 
-        // Utilitzem try-with-resources per assegurar que la connexió es tanca al final
         try (Connection conn = UtilsSQLite.connect(filePath)) {
 
             if (conn == null) {
@@ -25,27 +19,21 @@ public class MainSQLite {
                 return;
             }
 
-            // 1. Llistar les taules
             List<String> taules = UtilsSQLite.listTables(conn);
             System.out.println("Taules trobades: " + taules);
             System.out.println("--------------------------------------------------");
 
-            // 2. Iterar per cada taula i mostrar-ne el contingut
             for (String nomTaula : taules) {
                 
-                // Ignorem taules internes de SQLite si cal (opcional)
                 if (nomTaula.startsWith("sqlite_")) continue;
 
                 System.out.println("TAULA: " + nomTaula);
 
-                // Utilitzem un altre try-with-resources pel ResultSet específic d'aquesta taula
-                // Això assegura que tanquem el cursor abans de passar a la següent taula
                 try (ResultSet rs = UtilsSQLite.querySelect(conn, "SELECT * FROM " + nomTaula)) {
                     
                     ResultSetMetaData rsmd = rs.getMetaData();
                     int numColumnes = rsmd.getColumnCount();
 
-                    // A) Mostrar les columnes (Metadades)
                     System.out.println("  Columnes:");
                     for (int i = 1; i <= numColumnes; i++) {
                         String label = rsmd.getColumnLabel(i);
@@ -53,7 +41,6 @@ public class MainSQLite {
                         System.out.println("    - " + label + " (" + typeName + ")");
                     }
 
-                    // B) Mostrar les dades (Contingut)
                     System.out.println("  Dades:");
                     boolean teDades = false;
                     
@@ -65,10 +52,8 @@ public class MainSQLite {
                             String nomColumna = rsmd.getColumnName(i);
                             int tipusColumna = rsmd.getColumnType(i);
 
-                            // Afegim coma si no és el primer element
                             if (i > 1) fila.append(", ");
 
-                            // Formatem segons el tipus de dada per evitar errors
                             switch (tipusColumna) {
                                 case java.sql.Types.INTEGER:
                                 case java.sql.Types.TINYINT:
@@ -94,7 +79,6 @@ public class MainSQLite {
                                     fila.append(rs.getLong(nomColumna));
                                     break;
                                 default:
-                                    // Fallback genèric per altres tipus (dates, blobs, etc.)
                                     Object obj = rs.getObject(nomColumna);
                                     fila.append(obj != null ? obj.toString() : "NULL");
                                     break;

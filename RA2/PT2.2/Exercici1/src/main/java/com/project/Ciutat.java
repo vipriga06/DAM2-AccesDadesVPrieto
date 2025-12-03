@@ -45,7 +45,6 @@ public class Ciutat implements Serializable {
 	private Set<Ciutada> ciutadans = new LinkedHashSet<>();
 
 	public Ciutat() {
-		// Required by JPA
 	}
 
 	public Ciutat(String nom, String pais, int poblacio) {
