@@ -1,13 +1,5 @@
 package com.project.dao;
 
-import com.project.domain.*;
-import org.hibernate.Session;
-import org.hibernate.SessionFactory;
-import org.hibernate.Transaction;
-import org.hibernate.cfg.Configuration;
-import org.hibernate.boot.registry.StandardServiceRegistryBuilder;
-import org.hibernate.service.ServiceRegistry;
-
 import java.io.IOException;
 import java.io.InputStream;
 import java.time.LocalDate;
@@ -15,6 +7,20 @@ import java.util.Collection;
 import java.util.List;
 import java.util.Properties;
 import java.util.Set;
+
+import org.hibernate.Session;
+import org.hibernate.SessionFactory;
+import org.hibernate.Transaction;
+import org.hibernate.boot.registry.StandardServiceRegistryBuilder;
+import org.hibernate.cfg.Configuration;
+import org.hibernate.service.ServiceRegistry;
+
+import com.project.domain.Autor;
+import com.project.domain.Biblioteca;
+import com.project.domain.Exemplar;
+import com.project.domain.Llibre;
+import com.project.domain.Persona;
+import com.project.domain.Prestec;
 
 /**
  * Classe Manager - Capa d'accés a dades (DAO)
@@ -93,7 +99,8 @@ public class Manager {
         try {
             tx = session.beginTransaction();
             // TODO: Crear l'objecte Autor amb el constructor i persistir-lo amb session.persist()
-            
+            autor = new Autor(nom);
+            session.persist(autor);
             tx.commit();
         } catch (Exception e) {
             if (tx != null) tx.rollback();

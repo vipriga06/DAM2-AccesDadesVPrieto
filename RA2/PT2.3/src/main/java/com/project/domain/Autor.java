@@ -1,16 +1,30 @@
 package com.project.domain;
 
-import jakarta.persistence.*;
 import java.io.Serializable;
 import java.util.HashSet;
 import java.util.Set;
 
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import jakarta.persistence.ManyToMany;
+import jakarta.persistence.Table;
+
+
 // TODO 1: Afegir anotacions @Entity i @Table
+@Entity
+@Table(name = "autor")
 public class Autor implements Serializable {
+    
+    
 
     private static final long serialVersionUID = 1L;
 
     // TODO 2: Afegir @Id i @GeneratedValue
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long autorId;
 
     private String nom;
@@ -18,6 +32,7 @@ public class Autor implements Serializable {
     // TODO 3: Relació ManyToMany. 
     // PISTA: L'enunciat diu que Autor és la part inversa ("mappedBy").
     // Això vol dir que la taula intermèdia la gestiona l'entitat 'Llibre'.
+    @ManyToMany(mappedBy="autors")
     private Set<Llibre> llibres = new HashSet<>();
 
     public Autor() {}

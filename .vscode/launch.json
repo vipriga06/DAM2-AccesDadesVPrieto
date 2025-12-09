@@ -5,6 +5,13 @@
     "version": "0.2.0",
     "configurations": [
         {
+            "type": "java",
+            "name": "Main",
+            "request": "launch",
+            "mainClass": "com.project.Main",
+            "projectName": "mp0486-tema2-pr23"
+        },
+        {
             "type": "jdk",
             "request": "launch",
             "name": "Launch Java App"

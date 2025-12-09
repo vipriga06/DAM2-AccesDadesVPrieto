@@ -1,19 +1,35 @@
 package com.project.domain;
 
-import jakarta.persistence.*;
 import java.io.Serializable;
 import java.time.LocalDate;
 
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
+import jakarta.persistence.Table;
+
 // TODO 1: @Entity
+@Entity
+@Table(name = "prestec")
 public class Prestec implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
     // TODO 2: @Id
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long prestecId;
 
     // TODO 3: Relacions @ManyToOne (cap a Exemplar i Persona)
+    @ManyToOne
+    @JoinColumn(name = "exemplar_id")
     private Exemplar exemplar;
+
+    @ManyToOne
+    @JoinColumn(name = "persona_id")
     private Persona persona;
 
     private LocalDate dataPrestec;

@@ -1,16 +1,29 @@
 package com.project.domain;
 
-import jakarta.persistence.*;
 import java.io.Serializable;
 import java.util.HashSet;
 import java.util.Set;
 
+import jakarta.persistence.Entity;
+import jakarta.persistence.FetchType;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.JoinTable;
+import jakarta.persistence.ManyToMany;
+import jakarta.persistence.Table;
+
 // TODO 1: Afegir anotacions @Entity i @Table
+@Entity
+@Table(name = "llibre")
 public class Llibre implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
     // TODO 2: @Id i @GeneratedValue
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long llibreId;
 
     private String isbn;
@@ -22,10 +35,17 @@ public class Llibre implements Serializable {
     // PISTA: Aquesta entitat és la "propietària" de la relació. 
     // Cal definir aquí el @JoinTable explícitament.
     // PISTA EXTRA: Fes servir fetch = FetchType.LAZY per eficiència.
+    @ManyToMany(fetch = FetchType.LAZY)
+    @JoinTable(
+        name = "llibre_autor",
+        joinColumns=@JoinColumn(name="llibre_id"),
+        inverseJoinColumns=@JoinColumn(name="autor_id")
+    )
     private Set<Autor> autors = new HashSet<>();
 
     // TODO 4: Relació OneToMany amb Exemplar.
     // PISTA: mappedBy = "llibre"
+    @ManyToMany(mappedBy="llibre")
     private Set<Exemplar> exemplars = new HashSet<>();
 
     public Llibre() {}

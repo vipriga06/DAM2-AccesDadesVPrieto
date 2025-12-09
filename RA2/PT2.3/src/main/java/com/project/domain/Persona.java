@@ -1,16 +1,26 @@
 package com.project.domain;
 
-import jakarta.persistence.*;
 import java.io.Serializable;
 import java.util.HashSet;
 import java.util.Set;
 
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import jakarta.persistence.OneToMany;
+import jakarta.persistence.Table;
+
 // TODO 1: @Entity
+@Entity
+@Table(name = "persona")
 public class Persona implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
     // TODO 2: @Id
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long personaId;
 
     private String dni;
@@ -19,6 +29,7 @@ public class Persona implements Serializable {
     private String email;
 
     // TODO 3: @OneToMany cap a Prestec
+    @OneToMany(mappedBy="persona")
     private Set<Prestec> prestecs = new HashSet<>();
 
     public Persona() {}
