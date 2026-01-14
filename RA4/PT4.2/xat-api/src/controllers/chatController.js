@@ -1,7 +1,7 @@
 // Importacions necessàries
 const axios = require('axios');
 
-const { Conversation, Prompt } = require('../models');
+const { Conversation, Prompt, SentimentAnalysis } = require('../models');
 const { validateUUID } = require('../middleware/validators');
 const { logger } = require('../config/logger');
 
@@ -385,9 +385,138 @@ const getConversation = async (req, res, next) => {
     }
 };
 
+/**
+ * Analitza el sentiment d'un text utilitzant Ollama
+ * @route POST /api/chat/sentiment-analysis
+ */
+const analyzeSentiment = async (req, res, next) => {
+    try {
+        const {
+            text,
+            language = 'ca',
+            model = DEFAULT_OLLAMA_MODEL
+        } = req.body;
+
+        logger.info('Nova sol·licitud d\'anàlisi de sentiment rebuda', {
+            textLength: text?.length,
+            language,
+            model
+        });
+
+        // Validacions inicials
+        if (!text?.trim()) {
+            logger.warn('Intent de fer anàlisi de sentiment amb text buit');
+            return res.status(400).json({ message: 'El text és obligatori' });
+        }
+
+        if (text.trim().length > 5000) {
+            logger.warn('Text massa llarg per a anàlisi de sentiment', { textLength: text.length });
+            return res.status(400).json({ message: 'El text no pot superar 5000 caràcters' });
+        }
+
+        logger.debug('Iniciant anàlisi de sentiment', {
+            textLength: text.length,
+            language,
+            model
+        });
+
+        // Prompt per a Ollama per analitzar sentiment
+        const sentimentPrompt = `Analitza el sentiment del següent text en ${language === 'es' ? 'espanyol' : language === 'en' ? 'anglès' : 'català'} i proporciona una resposta en format JSON amb aquesta estructura exacta:
+{
+  "sentiment": "positive" o "negative" o "neutral",
+  "score": un número entre -1 (molt negatiu) i 1 (molt positiu),
+  "confidence": "low" o "medium" o "high",
+  "keywords": una array de strings amb les paraules clau més rellevants,
+  "analysis": una explicació breu del sentiment (1-2 frases)
+}
+
+Text a analitzar: "${text.trim()}"
+
+Resposta JSON:`;
+
+        // Crida a Ollama
+        const ollamaResponse = await generateResponse(sentimentPrompt, { model });
+
+        logger.debug('Resposta d\'Ollama rebuda per sentiment', {
+            responseLength: ollamaResponse.length
+        });
+
+        // Parsing de la resposta JSON
+        let parsedResponse;
+        try {
+            // Buscar el JSON dins de la resposta
+            const jsonMatch = ollamaResponse.match(/\{[\s\S]*\}/);
+            if (!jsonMatch) {
+                throw new Error('No JSON found in response');
+            }
+            parsedResponse = JSON.parse(jsonMatch[0]);
+        } catch (parseError) {
+            logger.error('Error parseant resposta d\'Ollama', {
+                error: parseError.message,
+                response: ollamaResponse.substring(0, 500)
+            });
+            return res.status(500).json({
+                message: 'Error processant l\'anàlisi de sentiment',
+                error: 'No s\'ha pogut parsing la resposta'
+            });
+        }
+
+        // Validar estructura de la resposta
+        if (!parsedResponse.sentiment || !parsedResponse.score || !parsedResponse.confidence) {
+            logger.error('Resposta d\'Ollama amb estructura invàlida', {
+                parsedResponse
+            });
+            return res.status(500).json({
+                message: 'Error processant l\'anàlisi de sentiment',
+                error: 'Estructura de resposta invàlida'
+            });
+        }
+
+        // Guardar a la base de dades
+        const sentimentAnalysis = await SentimentAnalysis.create({
+            text: text.trim(),
+            sentiment: parsedResponse.sentiment,
+            score: parseFloat(parsedResponse.score),
+            confidence: parsedResponse.confidence,
+            keywords: Array.isArray(parsedResponse.keywords) ? parsedResponse.keywords : [],
+            analysis: parsedResponse.analysis || '',
+            language,
+            model
+        });
+
+        logger.info('Anàlisi de sentiment guardat correctament a BD', {
+            analysisId: sentimentAnalysis.id,
+            sentiment: sentimentAnalysis.sentiment,
+            score: sentimentAnalysis.score
+        });
+
+        res.status(201).json({
+            id: sentimentAnalysis.id,
+            text: sentimentAnalysis.text,
+            sentiment: sentimentAnalysis.sentiment,
+            score: sentimentAnalysis.score,
+            confidence: sentimentAnalysis.confidence,
+            keywords: sentimentAnalysis.keywords,
+            analysis: sentimentAnalysis.analysis,
+            language: sentimentAnalysis.language,
+            model: sentimentAnalysis.model,
+            createdAt: sentimentAnalysis.createdAt,
+            message: 'Anàlisi de sentiment realitzat correctament'
+        });
+    } catch (error) {
+        logger.error('Error en l\'anàlisi de sentiment', {
+            error: error.message,
+            stack: error.stack,
+            textLength: req.body?.text?.length
+        });
+        next(error);
+    }
+};
+
 // Exportació de les funcions públiques
 module.exports = {
     registerPrompt,
     getConversation,
-    listOllamaModels
+    listOllamaModels,
+    analyzeSentiment
 };

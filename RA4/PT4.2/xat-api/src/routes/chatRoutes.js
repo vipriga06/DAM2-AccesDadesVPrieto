@@ -1,6 +1,6 @@
 const express = require('express');
 const router = express.Router();
-const { registerPrompt, getConversation, listOllamaModels } = require('../controllers/chatController');
+const { registerPrompt, getConversation, listOllamaModels, analyzeSentiment } = require('../controllers/chatController');
 
 /**
  * @swagger
@@ -75,5 +75,77 @@ router.get('/conversation/:id', getConversation);
  *         description: Error al recuperar models
  */
 router.get('/models', listOllamaModels);
+
+/**
+ * @swagger
+ * /api/chat/sentiment-analysis:
+ *   post:
+ *     summary: Realitzar anàlisi de sentiment d'un text
+ *     tags: [Sentiment Analysis]
+ *     requestBody:
+ *       required: true
+ *       content:
+ *         application/json:
+ *           schema:
+ *             type: object
+ *             properties:
+ *               text:
+ *                 type: string
+ *                 description: Text a analitzar (obligatori, màx 5000 caràcters)
+ *                 example: "Aquest producte és fantàstic! Estic molt content amb la compra."
+ *               language:
+ *                 type: string
+ *                 description: Idioma del text (ca/es/en)
+ *                 default: ca
+ *                 example: ca
+ *               model:
+ *                 type: string
+ *                 description: Model d'Ollama a utilitzar
+ *                 default: qwen2.5vl:7b
+ *                 example: qwen2.5vl:7b
+ *             required:
+ *               - text
+ *     responses:
+ *       201:
+ *         description: Anàlisi de sentiment completat correctament
+ *         content:
+ *           application/json:
+ *             schema:
+ *               type: object
+ *               properties:
+ *                 id:
+ *                   type: string
+ *                   format: uuid
+ *                 text:
+ *                   type: string
+ *                 sentiment:
+ *                   type: string
+ *                   enum: [positive, negative, neutral]
+ *                 score:
+ *                   type: number
+ *                   minimum: -1
+ *                   maximum: 1
+ *                 confidence:
+ *                   type: string
+ *                   enum: [low, medium, high]
+ *                 keywords:
+ *                   type: array
+ *                   items:
+ *                     type: string
+ *                 analysis:
+ *                   type: string
+ *                 language:
+ *                   type: string
+ *                 model:
+ *                   type: string
+ *                 createdAt:
+ *                   type: string
+ *                   format: date-time
+ *       400:
+ *         description: Dades invàlides (text buit o massa llarg)
+ *       500:
+ *         description: Error processant l'anàlisi de sentiment
+ */
+router.post('/sentiment-analysis', analyzeSentiment);
 
 module.exports = router;
