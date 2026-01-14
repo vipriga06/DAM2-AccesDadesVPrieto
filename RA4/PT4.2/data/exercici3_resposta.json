@@ -1,0 +1,168 @@
+{
+  "analisis": [
+    {
+      "imatge": {
+        "nom_fitxer": "02f4b3be2d.jpg"
+      },
+      "analisi": {
+        "analisi_raw": "```json\n{\n    \"nom_comu\": \"Elaphantus rex\",\n    \"nom_cientific\": \"Loxodonta cyclotis\",\n    \"taxonomia\": {\n        \"classe\": \"mamífer/au/rèptil/amfibi/peix\",\n        \"ordre\": \"Elephantidae\",\n        \"familia\": \"Loxodonta\"\n    },\n    \"habitat\": {\n        \"tipus\": [\n            {\n                \"hàbitats\": [\"Congo Basin\"]\n            }\n        ],\n        \"regioGeografica\": [\n            {\n                \"regions\": [\"Africa Sub-Sahariana\"]\n            }\n        ],\n        \"clima\": [\n            {\n                \"climes\": [\"Tropical\"]\n            }\n        ]\n    },\n    \"dieta\": {\n        \"tipus\": \"herbívor\",\n        \"aliments_principals\": [\n            {\n                \"aliments\": [\"Foliage\"]\n            }\n        ]\n    },\n    \"caracteristiques_fisicas\": {\n        \"mida\": {\n            \"altura_mitjana_cm\": 400,\n            \"pes_mitja_kg\": 6000\n        },\n        \"colors_predominants\": [\n            {\n                \"colors\": [\"Brown\"]\n            }\n        ],\n   ",
+        "nota": "Error al parsear"
+      }
+    },
+    {
+      "imatge": {
+        "nom_fitxer": "03d7fc0888.jpg"
+      },
+      "analisi": {
+        "nom_comu": "Bison",
+        "nom_cientific": "Bison bison",
+        "taxonomia": {
+          "classe": "Mammalia",
+          "ordre": "Artiodactyla",
+          "familia": "Bovidae"
+        },
+        "habitat": {
+          "tipus": [
+            "Montanha",
+            "Prado"
+          ],
+          "regioGeografica": [
+            "Europa",
+            "América del Norte"
+          ],
+          "clima": [
+            "Temperado"
+          ]
+        },
+        "dieta": {
+          "tipus": "Herbivor",
+          "aliments_principals": [
+            "Foliage"
+          ]
+        },
+        "caracteristiques_fisiques": {
+          "mida": {
+            "altura_mitjana_cm": 120,
+            "pes_mitja_kg": 900
+          },
+          "colors_predominants": [
+            "Gris",
+            "Marrón"
+          ],
+          "trets_distintius": [
+            "Tronco largo"
+          ]
+        },
+        "estat_conservacio": {
+          "classificacio_IUCN": "Vulnerable",
+          "amenaces_principals": [
+            "Perdida de hábitat"
+          ]
+        }
+      }
+    },
+    {
+      "imatge": {
+        "nom_fitxer": "00f56e5c92.jpg"
+      },
+      "analisi": {
+        "nom_comu": "Mammut americanum",
+        "nom_cientific": "Mastodon americanus",
+        "taxonomia": {
+          "classe": "Proboscidea",
+          "ordre": "Elephantiformes",
+          "familia": "Mammutidae"
+        },
+        "habitat": {
+          "tipus": [
+            "Terrenos forestales y de sabana"
+          ],
+          "regioGeografica": [
+            "América del Norte"
+          ],
+          "clima": [
+            "Clima templado a frío"
+          ]
+        },
+        "dieta": {
+          "tipus": "Omnívoro",
+          "aliments_principals": [
+            "Frutos silvestres y hojas de árboles"
+          ]
+        },
+        "caracteristiques_fisicas": {
+          "mida": {
+            "altura_mitjana_cm": 200,
+            "pes_mitja_kg": 1500
+          },
+          "colors_predominantes": [
+            "Gris oscuro",
+            "Marrón claro"
+          ],
+          "trets_distintius": [
+            "Cara y columna vertebral prominentes"
+          ]
+        },
+        "estat_conservacio": {
+          "classificacio_IUCN": "Extinto",
+          "amenaces_principals": [
+            "Depredación por humanos"
+          ]
+        }
+      }
+    },
+    {
+      "imatge": {
+        "nom_fitxer": "010fce8ee7.jpg"
+      },
+      "analisi": {
+        "nom_comu": "zorro",
+        "nom_cientific": "genus vulpes",
+        "taxonomia": {
+          "classe": "mamífer/au/rèptil/amfibi/peix",
+          "ordre": "carnívoro",
+          "familia": "Lycalidae"
+        },
+        "habitat": {
+          "tipus": [
+            "hàbitats"
+          ],
+          "regioGeografica": [
+            "Eurasia",
+            "America"
+          ],
+          "clima": [
+            "cálido"
+          ]
+        },
+        "dieta": {
+          "tipus": "carnívor/omnívor",
+          "aliments_principals": [
+            "mamíferos",
+            "aves",
+            "insectos"
+          ]
+        },
+        "caracteristiques_fisicas": {
+          "mida": {
+            "altura_mitjana_cm": 25,
+            "pes_mitja_kg": 7.5
+          },
+          "colors_predominantes": [
+            "blanc",
+            "gris"
+          ],
+          "trets_distintius": [
+            "mellor en el terrat"
+          ]
+        },
+        "estat_conservacio": {
+          "classificacio_IUCN": "preocupación menor",
+          "amenaces_principals": [
+            "degradació del hábitat"
+          ]
+        }
+      }
+    }
+  ]
+}
