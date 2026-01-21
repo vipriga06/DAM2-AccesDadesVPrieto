@@ -2,15 +2,6 @@
   "analisis": [
     {
       "imatge": {
-        "nom_fitxer": "02f4b3be2d.jpg"
-      },
-      "analisi": {
-        "analisi_raw": "```json\n{\n    \"nom_comu\": \"Elaphantus rex\",\n    \"nom_cientific\": \"Loxodonta cyclotis\",\n    \"taxonomia\": {\n        \"classe\": \"mamífer/au/rèptil/amfibi/peix\",\n        \"ordre\": \"Elephantidae\",\n        \"familia\": \"Loxodonta\"\n    },\n    \"habitat\": {\n        \"tipus\": [\n            {\n                \"hàbitats\": [\"Congo Basin\"]\n            }\n        ],\n        \"regioGeografica\": [\n            {\n                \"regions\": [\"Africa Sub-Sahariana\"]\n            }\n        ],\n        \"clima\": [\n            {\n                \"climes\": [\"Tropical\"]\n            }\n        ]\n    },\n    \"dieta\": {\n        \"tipus\": \"herbívor\",\n        \"aliments_principals\": [\n            {\n                \"aliments\": [\"Foliage\"]\n            }\n        ]\n    },\n    \"caracteristiques_fisicas\": {\n        \"mida\": {\n            \"altura_mitjana_cm\": 400,\n            \"pes_mitja_kg\": 6000\n        },\n        \"colors_predominants\": [\n            {\n                \"colors\": [\"Brown\"]\n            }\n        ],\n   ",
-        "nota": "Error al parsear"
-      }
-    },
-    {
-      "imatge": {
         "nom_fitxer": "03d7fc0888.jpg"
       },
       "analisi": {
