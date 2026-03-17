@@ -11,3 +11,13 @@
 [2026-03-17T17:33:03.009Z] INFO Move saved sessionId=641fb81d-f2d5-4b13-bd44-355bef28e3ba playerId=player-1 x=2 y=2
 [2026-03-17T17:33:03.408Z] INFO Move saved sessionId=641fb81d-f2d5-4b13-bd44-355bef28e3ba playerId=player-1 x=2 y=1
 [2026-03-17T17:33:13.413Z] INFO Session ended sessionId=641fb81d-f2d5-4b13-bd44-355bef28e3ba playerId=player-1 distance=2.0000
+[2026-03-17T17:35:53.333Z] INFO Client disconnected clientId=d883f7af-20bd-41de-8348-681f9c0b39be
+[2026-03-17T17:35:55.348Z] INFO Client connected clientId=fea0bcfa-ca5b-46a5-b421-7e15da12d7fc ip=127.0.0.1
+[2026-03-17T17:35:55.754Z] INFO Session started sessionId=9d393637-121e-408b-beb2-a115b393afe4 playerId=player-1
+[2026-03-17T17:35:55.766Z] INFO Move saved sessionId=9d393637-121e-408b-beb2-a115b393afe4 playerId=player-1 x=0 y=1
+[2026-03-17T17:35:56.159Z] INFO Move saved sessionId=9d393637-121e-408b-beb2-a115b393afe4 playerId=player-1 x=0 y=2
+[2026-03-17T17:35:56.560Z] INFO Move saved sessionId=9d393637-121e-408b-beb2-a115b393afe4 playerId=player-1 x=1 y=2
+[2026-03-17T17:35:56.957Z] INFO Move saved sessionId=9d393637-121e-408b-beb2-a115b393afe4 playerId=player-1 x=2 y=2
+[2026-03-17T17:35:57.360Z] INFO Move saved sessionId=9d393637-121e-408b-beb2-a115b393afe4 playerId=player-1 x=2 y=1
+[2026-03-17T17:36:07.364Z] INFO Session ended sessionId=9d393637-121e-408b-beb2-a115b393afe4 playerId=player-1 distance=2.0000
+[2026-03-17T17:36:07.368Z] INFO Client disconnected clientId=fea0bcfa-ca5b-46a5-b421-7e15da12d7fc
