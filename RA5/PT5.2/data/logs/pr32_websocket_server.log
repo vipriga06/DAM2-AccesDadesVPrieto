@@ -1,0 +1,13 @@
+[2026-03-17T17:27:11.876Z] INFO Connected to MongoDB mongodb://root:password@localhost:27017/
+[2026-03-17T17:27:11.878Z] INFO WebSocket server listening on ws://127.0.0.1:8082
+[2026-03-17T17:29:05.496Z] INFO Shutting down WebSocket server
+[2026-03-17T17:32:39.494Z] INFO Connected to MongoDB mongodb://root:password@localhost:27017/
+[2026-03-17T17:32:39.496Z] INFO WebSocket server listening on ws://127.0.0.1:8082
+[2026-03-17T17:33:01.392Z] INFO Client connected clientId=d883f7af-20bd-41de-8348-681f9c0b39be ip=127.0.0.1
+[2026-03-17T17:33:01.801Z] INFO Session started sessionId=641fb81d-f2d5-4b13-bd44-355bef28e3ba playerId=player-1
+[2026-03-17T17:33:01.829Z] INFO Move saved sessionId=641fb81d-f2d5-4b13-bd44-355bef28e3ba playerId=player-1 x=0 y=1
+[2026-03-17T17:33:02.202Z] INFO Move saved sessionId=641fb81d-f2d5-4b13-bd44-355bef28e3ba playerId=player-1 x=0 y=2
+[2026-03-17T17:33:02.604Z] INFO Move saved sessionId=641fb81d-f2d5-4b13-bd44-355bef28e3ba playerId=player-1 x=1 y=2
+[2026-03-17T17:33:03.009Z] INFO Move saved sessionId=641fb81d-f2d5-4b13-bd44-355bef28e3ba playerId=player-1 x=2 y=2
+[2026-03-17T17:33:03.408Z] INFO Move saved sessionId=641fb81d-f2d5-4b13-bd44-355bef28e3ba playerId=player-1 x=2 y=1
+[2026-03-17T17:33:13.413Z] INFO Session ended sessionId=641fb81d-f2d5-4b13-bd44-355bef28e3ba playerId=player-1 distance=2.0000
