@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<youtubers>
+  <youtuber id="99">
+    <channel>Canal Minimal</channel>
+    <name>Persona Prova</name>
+    <subscribers>1234</subscribers>
+    <joinDate>2024-01-15</joinDate>
+    <categories>
+      <category>Education</category>
+    </categories>
+    <videos>
+      <video id="v99">
+        <title>Vídeo de prova</title>
+        <duration>02:30</duration>
+        <views>42</views>
+        <uploadDate>2024-02-01</uploadDate>
+        <likes>7</likes>
+        <comments>3</comments>
+      </video>
+    </videos>
+  </youtuber>
+</youtubers>
