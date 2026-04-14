@@ -21,3 +21,8 @@
 [2026-03-17T17:35:57.360Z] INFO Move saved sessionId=9d393637-121e-408b-beb2-a115b393afe4 playerId=player-1 x=2 y=1
 [2026-03-17T17:36:07.364Z] INFO Session ended sessionId=9d393637-121e-408b-beb2-a115b393afe4 playerId=player-1 distance=2.0000
 [2026-03-17T17:36:07.368Z] INFO Client disconnected clientId=fea0bcfa-ca5b-46a5-b421-7e15da12d7fc
+[2026-04-14T16:48:55.323Z] INFO MongoDB connectat a mongodb://root:password@localhost:27017/
+[2026-04-14T16:48:55.324Z] INFO Servidor WebSocket escoltant a ws://127.0.0.1:8082
+[2026-04-14T16:58:03.074Z] INFO MongoDB connectat a mongodb://root:password@localhost:27017/
+[2026-04-14T16:58:03.075Z] INFO Servidor WebSocket escoltant a ws://127.0.0.1:8082
+[2026-04-14T16:59:50.973Z] INFO Apagant servidor WebSocket

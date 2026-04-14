@@ -10,10 +10,10 @@ const WS_PORT = Number(process.env.WS_PORT || 8082);
 const PLAYER_ID = process.env.PLAYER_ID || 'player-1';
 
 const DIRECTIONS = {
-  up: { keyName: 'up', dx: 0, dy: 1 },
-  down: { keyName: 'down', dx: 0, dy: -1 },
-  left: { keyName: 'left', dx: -1, dy: 0 },
-  right: { keyName: 'right', dx: 1, dy: 0 }
+  up: { dx: 0, dy: 1 },
+  down: { dx: 0, dy: -1 },
+  left: { dx: -1, dy: 0 },
+  right: { dx: 1, dy: 0 }
 };
 
 const state = { x: 0, y: 0 };
@@ -36,7 +36,7 @@ function sendMove(ws, directionName) {
   };
 
   ws.send(JSON.stringify(payload));
-  process.stdout.write(`Sent move ${directionName} -> (${state.x}, ${state.y})\n`);
+  process.stdout.write(`Moviment enviat ${directionName} -> (${state.x}, ${state.y})\n`);
 }
 
 function runDemo(ws) {
@@ -46,7 +46,7 @@ function runDemo(ws) {
   const timer = setInterval(() => {
     if (index >= sequence.length) {
       clearInterval(timer);
-      process.stdout.write('Demo finished. Waiting inactivity timeout...\n');
+      process.stdout.write('Demo finalitzada. Esperant timeout d\'inactivitat...\n');
       return;
     }
 
@@ -56,7 +56,7 @@ function runDemo(ws) {
 }
 
 function startInteractive(ws) {
-  process.stdout.write('Use arrow keys to move. Press q to quit.\n');
+  process.stdout.write('Mou-te amb les fletxes. Prem q per sortir.\n');
 
   readline.emitKeypressEvents(process.stdin);
   if (process.stdin.isTTY) {
@@ -84,7 +84,7 @@ function startClient() {
   const isDemo = process.argv.includes('--demo');
 
   ws.on('open', () => {
-    process.stdout.write(`Connected to ws://${WS_HOST}:${WS_PORT} as ${PLAYER_ID}\n`);
+    process.stdout.write(`Connectat a ws://${WS_HOST}:${WS_PORT} com ${PLAYER_ID}\n`);
 
     if (isDemo) {
       runDemo(ws);
@@ -99,28 +99,29 @@ function startClient() {
       const payload = JSON.parse(raw.toString());
 
       if (payload.type === 'move_saved') {
-        process.stdout.write(`Saved movement for session ${payload.sessionId}\n`);
+        process.stdout.write(
+          `Servidor: moviment guardat (sessionId=${payload.sessionId}, moveIndex=${payload.moveIndex})\n`
+        );
       } else if (payload.type === 'session_ended') {
         process.stdout.write(
-          `Session ended ${payload.sessionId}. Straight distance: ${payload.straightDistance.toFixed(4)}\n`
+          `Servidor: partida finalitzada (${payload.reason}). Distancia recta: ${payload.straightDistance.toFixed(4)}\n`
         );
 
-        // In demo mode we close right away once the inactivity result arrives.
         if (isDemo) {
           ws.close();
         }
       } else if (payload.type === 'error') {
-        process.stdout.write(`Server error: ${payload.message}\n`);
+        process.stdout.write(`Servidor: error -> ${payload.message}\n`);
       } else {
-        process.stdout.write(`Server message: ${raw.toString()}\n`);
+        process.stdout.write(`Servidor: ${raw.toString()}\n`);
       }
     } catch {
-      process.stdout.write(`Server message: ${raw.toString()}\n`);
+      process.stdout.write(`Servidor: ${raw.toString()}\n`);
     }
   });
 
   ws.on('close', () => {
-    process.stdout.write('Disconnected from server\n');
+    process.stdout.write('Connexio tancada\n');
 
     if (isDemo) {
       process.exit(0);
@@ -128,7 +129,7 @@ function startClient() {
   });
 
   ws.on('error', (error) => {
-    process.stderr.write(`WebSocket client error: ${error.message}\n`);
+    process.stderr.write(`Error WebSocket client: ${error.message}\n`);
   });
 }
 

@@ -2,179 +2,244 @@ const fs = require('fs');
 const path = require('path');
 const { randomUUID } = require('crypto');
 const WebSocket = require('ws');
-const dotenv = require('dotenv');
 const winston = require('winston');
+const LokiTransport = require('winston-loki');
 const { MongoClient } = require('mongodb');
+const dotenv = require('dotenv');
 
 dotenv.config({ path: path.join(__dirname, '..', '..', '.env') });
 
 const PROJECT_ROOT = path.resolve(__dirname, '..', '..');
-const LOG_DIR = process.env.LOG_FILE_PATH
-  ? path.resolve(PROJECT_ROOT, process.env.LOG_FILE_PATH)
-  : path.resolve(PROJECT_ROOT, '../data/logs');
-const WS_HOST = process.env.WS_HOST || '127.0.0.1';
-const WS_PORT = Number(process.env.WS_PORT || 8082);
-const INACTIVITY_TIMEOUT_MS = Number(process.env.INACTIVITY_TIMEOUT_MS || 10000);
-const MONGODB_URI = process.env.MONGODB_URI || 'mongodb://root:password@localhost:27017/';
-const MONGODB_DB_NAME = process.env.MONGODB_DB_NAME || 'pr32_game_db';
-const MONGODB_COLLECTION = process.env.MONGODB_COLLECTION || 'movements';
 
-function ensureDir(dirPath) {
+function parseNumber(value, defaultValue) {
+  const parsed = Number(value);
+  return Number.isFinite(parsed) ? parsed : defaultValue;
+}
+
+function getConfig() {
+  return {
+    wsHost: process.env.WS_HOST || '127.0.0.1',
+    wsPort: parseNumber(process.env.WS_PORT, 8082),
+    inactivityTimeoutMs: parseNumber(process.env.INACTIVITY_TIMEOUT_MS, 10000),
+    mongodbUri: process.env.MONGODB_URI || 'mongodb://root:password@localhost:27017/',
+    mongodbDbName: process.env.MONGODB_DB_NAME || 'pr32_game_db',
+    mongodbCollection: process.env.MONGODB_COLLECTION || 'movements',
+    logLevel: process.env.LOG_LEVEL || 'info',
+    logDir: process.env.LOG_FILE_PATH
+      ? path.resolve(PROJECT_ROOT, process.env.LOG_FILE_PATH)
+      : path.resolve(PROJECT_ROOT, '../data/logs'),
+    lokiEnabled: String(process.env.LOKI_ENABLED || 'false').toLowerCase() === 'true',
+    lokiUrl: process.env.LOKI_URL || 'http://localhost:3100',
+    lokiJob: process.env.LOKI_JOB || 'pr32-websocket'
+  };
+}
+
+function ensureDirectory(dirPath) {
   fs.mkdirSync(dirPath, { recursive: true });
 }
 
-function createLogger() {
-  ensureDir(LOG_DIR);
-  const logFile = path.join(LOG_DIR, 'pr32_websocket_server.log');
+function createLogger(config) {
+  ensureDirectory(config.logDir);
+  const logFilePath = path.join(config.logDir, 'pr32_websocket_server.log');
+
+  const transports = [
+    new winston.transports.Console(),
+    new winston.transports.File({ filename: logFilePath })
+  ];
+
+  if (config.lokiEnabled) {
+    transports.push(
+      new LokiTransport({
+        host: config.lokiUrl,
+        labels: { app: 'pr32-websocket-server', job: config.lokiJob },
+        json: true,
+        batching: true,
+        interval: 5
+      })
+    );
+  }
 
   return winston.createLogger({
-    level: process.env.LOG_LEVEL || 'info',
+    level: config.logLevel,
     format: winston.format.combine(
       winston.format.timestamp(),
       winston.format.printf(({ timestamp, level, message }) => `[${timestamp}] ${level.toUpperCase()} ${message}`)
     ),
-    transports: [
-      new winston.transports.Console(),
-      new winston.transports.File({ filename: logFile })
-    ]
+    transports
   });
 }
 
 function isValidMoveMessage(payload) {
-  if (!payload || typeof payload !== 'object') {
-    return false;
-  }
-
-  return payload.type === 'move'
-    && typeof payload.playerId === 'string'
-    && Number.isFinite(payload.x)
-    && Number.isFinite(payload.y);
+  return Boolean(
+    payload
+      && typeof payload === 'object'
+      && payload.type === 'move'
+      && typeof payload.playerId === 'string'
+      && Number.isFinite(payload.x)
+      && Number.isFinite(payload.y)
+      && typeof payload.direction === 'string'
+  );
 }
 
-function computeDistance(start, end) {
+function distanceInStraightLine(start, end) {
   const dx = end.x - start.x;
   const dy = end.y - start.y;
   return Math.sqrt((dx * dx) + (dy * dy));
 }
 
-async function startServer() {
-  const logger = createLogger();
-  const mongoClient = new MongoClient(MONGODB_URI);
+function createSessionFromMove(move) {
+  return {
+    sessionId: randomUUID(),
+    playerId: move.playerId,
+    start: { x: move.x, y: move.y },
+    end: { x: move.x, y: move.y },
+    moveCount: 0
+  };
+}
+
+function createMoveDocument(session, move) {
+  session.moveCount += 1;
+
+  return {
+    sessionId: session.sessionId,
+    playerId: session.playerId,
+    moveIndex: session.moveCount,
+    x: move.x,
+    y: move.y,
+    direction: move.direction,
+    createdAt: new Date()
+  };
+}
+
+function sendJson(ws, payload) {
+  if (ws.readyState === WebSocket.OPEN) {
+    ws.send(JSON.stringify(payload));
+  }
+}
+
+function parseJsonSafe(rawMessage) {
+  try {
+    return { ok: true, value: JSON.parse(rawMessage.toString()) };
+  } catch (error) {
+    return { ok: false, error };
+  }
+}
+
+async function runServer() {
+  const config = getConfig();
+  const logger = createLogger(config);
+  const mongoClient = new MongoClient(config.mongodbUri);
 
   await mongoClient.connect();
-  logger.info(`Connected to MongoDB ${MONGODB_URI}`);
+  logger.info(`MongoDB connectat a ${config.mongodbUri}`);
 
-  const movementsCollection = mongoClient.db(MONGODB_DB_NAME).collection(MONGODB_COLLECTION);
-  const wss = new WebSocket.Server({ host: WS_HOST, port: WS_PORT });
+  const movesCollection = mongoClient
+    .db(config.mongodbDbName)
+    .collection(config.mongodbCollection);
 
-  logger.info(`WebSocket server listening on ws://${WS_HOST}:${WS_PORT}`);
+  const webSocketServer = new WebSocket.Server({ host: config.wsHost, port: config.wsPort });
+  logger.info(`Servidor WebSocket escoltant a ws://${config.wsHost}:${config.wsPort}`);
 
-  wss.on('connection', (ws, req) => {
+  webSocketServer.on('connection', (ws, req) => {
     const clientId = randomUUID();
     const clientIp = req.socket.remoteAddress || 'unknown';
 
-    let currentSession = null;
+    let session = null;
     let inactivityTimer = null;
 
-    const clearTimer = () => {
+    const clearInactivityTimer = () => {
       if (inactivityTimer) {
         clearTimeout(inactivityTimer);
         inactivityTimer = null;
       }
     };
 
-    const finishSession = () => {
-      if (!currentSession) {
+    const finishCurrentSession = (reason) => {
+      if (!session) {
         return;
       }
 
-      const distance = computeDistance(currentSession.start, currentSession.end);
-      const finished = {
-        type: 'session_ended',
-        sessionId: currentSession.sessionId,
-        playerId: currentSession.playerId,
-        start: currentSession.start,
-        end: currentSession.end,
-        straightDistance: distance,
-        inactivityMs: INACTIVITY_TIMEOUT_MS
-      };
+      const straightDistance = distanceInStraightLine(session.start, session.end);
 
-      ws.send(JSON.stringify(finished));
+      sendJson(ws, {
+        type: 'session_ended',
+        reason,
+        sessionId: session.sessionId,
+        playerId: session.playerId,
+        start: session.start,
+        end: session.end,
+        movesRegistered: session.moveCount,
+        straightDistance,
+        inactivityMs: config.inactivityTimeoutMs
+      });
+
       logger.info(
-        `Session ended sessionId=${finished.sessionId} playerId=${finished.playerId} distance=${distance.toFixed(4)}`
+        `Partida finalitzada sessionId=${session.sessionId} playerId=${session.playerId} motiu=${reason} distancia=${straightDistance.toFixed(4)}`
       );
 
-      currentSession = null;
-      clearTimer();
+      session = null;
+      clearInactivityTimer();
     };
 
-    const resetInactivity = () => {
-      clearTimer();
+    const resetInactivityTimer = () => {
+      clearInactivityTimer();
       inactivityTimer = setTimeout(() => {
-        finishSession();
-      }, INACTIVITY_TIMEOUT_MS);
+        finishCurrentSession('inactivity_timeout');
+      }, config.inactivityTimeoutMs);
     };
 
-    logger.info(`Client connected clientId=${clientId} ip=${clientIp}`);
+    logger.info(`Client connectat clientId=${clientId} ip=${clientIp}`);
 
     ws.on('message', async (rawMessage) => {
       try {
-        const payload = JSON.parse(rawMessage.toString());
-
-        if (!isValidMoveMessage(payload)) {
-          logger.warn(`Invalid message from clientId=${clientId}`);
-          ws.send(JSON.stringify({ type: 'error', message: 'Invalid move payload' }));
+        const parsed = parseJsonSafe(rawMessage);
+        if (!parsed.ok) {
+          logger.warn(`JSON invalid rebut des de clientId=${clientId}`);
+          sendJson(ws, { type: 'error', message: 'Invalid JSON format' });
           return;
         }
 
-        if (!currentSession || currentSession.playerId !== payload.playerId) {
-          currentSession = {
-            sessionId: randomUUID(),
-            playerId: payload.playerId,
-            start: { x: payload.x, y: payload.y },
-            end: { x: payload.x, y: payload.y }
-          };
+        const payload = parsed.value;
 
-          logger.info(
-            `Session started sessionId=${currentSession.sessionId} playerId=${currentSession.playerId}`
-          );
+        if (!isValidMoveMessage(payload)) {
+          logger.warn(`Missatge invalid rebut des de clientId=${clientId}`);
+          sendJson(ws, { type: 'error', message: 'Invalid move payload' });
+          return;
         }
 
-        currentSession.end = { x: payload.x, y: payload.y };
+        if (!session || session.playerId !== payload.playerId) {
+          session = createSessionFromMove(payload);
+          logger.info(`Partida iniciada sessionId=${session.sessionId} playerId=${session.playerId}`);
+        }
 
-        const movementDoc = {
-          sessionId: currentSession.sessionId,
-          playerId: payload.playerId,
-          x: payload.x,
-          y: payload.y,
-          direction: payload.direction || null,
-          createdAt: new Date()
-        };
+        session.end = { x: payload.x, y: payload.y };
+        const moveDocument = createMoveDocument(session, payload);
+        await movesCollection.insertOne(moveDocument);
 
-        await movementsCollection.insertOne(movementDoc);
-
-        ws.send(JSON.stringify({
+        sendJson(ws, {
           type: 'move_saved',
-          sessionId: currentSession.sessionId,
+          sessionId: session.sessionId,
+          moveIndex: moveDocument.moveIndex,
           x: payload.x,
           y: payload.y,
-          direction: payload.direction || null
-        }));
+          direction: payload.direction
+        });
 
         logger.info(
-          `Move saved sessionId=${movementDoc.sessionId} playerId=${movementDoc.playerId} x=${movementDoc.x} y=${movementDoc.y}`
+          `Moviment guardat sessionId=${session.sessionId} moveIndex=${moveDocument.moveIndex} x=${payload.x} y=${payload.y} direction=${payload.direction}`
         );
 
-        resetInactivity();
+        resetInactivityTimer();
       } catch (error) {
-        logger.error(`Error processing message clientId=${clientId} ${error.message}`);
-        ws.send(JSON.stringify({ type: 'error', message: 'Server processing error' }));
+        logger.error(`Error processant missatge clientId=${clientId} ${error.message}`);
+        sendJson(ws, { type: 'error', message: 'Server processing error' });
       }
     });
 
-    ws.on('close', () => {
-      finishSession();
-      logger.info(`Client disconnected clientId=${clientId}`);
+    ws.on('close', (code, reasonBuffer) => {
+      const reason = reasonBuffer && reasonBuffer.length > 0 ? reasonBuffer.toString() : 'no-reason';
+      finishCurrentSession('client_disconnected');
+      logger.info(`Client desconnectat clientId=${clientId} code=${code} reason=${reason}`);
     });
 
     ws.on('error', (error) => {
@@ -182,19 +247,19 @@ async function startServer() {
     });
   });
 
-  const gracefulShutdown = async () => {
-    logger.info('Shutting down WebSocket server');
-    wss.close();
+  async function gracefulShutdown() {
+    logger.info('Apagant servidor WebSocket');
+    webSocketServer.close();
     await mongoClient.close();
-    logger.info('MongoDB connection closed');
+    logger.info('Connexio MongoDB tancada');
     process.exit(0);
-  };
+  }
 
   process.on('SIGINT', gracefulShutdown);
   process.on('SIGTERM', gracefulShutdown);
 }
 
-startServer().catch((error) => {
-  console.error('Fatal server error:', error);
+runServer().catch((error) => {
+  console.error('Error fatal del servidor:', error);
   process.exit(1);
 });

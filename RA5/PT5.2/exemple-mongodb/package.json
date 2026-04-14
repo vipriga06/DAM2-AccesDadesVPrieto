@@ -2,7 +2,10 @@
   "name": "exemple-mongodb",
   "version": "1.0.0",
   "description": "Exemple de càrrega d'XML a MongoDB",
+  "main": "src/pr32_websocket/websocket_server.js",
   "scripts": {
+    "start": "npm run pr32:server",
+    "test": "echo \"No hi ha tests automatitzats per a PR3.2 websocket\"",
     "pr32:server": "node src/pr32_websocket/websocket_server.js",
     "pr32:client": "node src/pr32_websocket/websocket_client.js",
     "pr32:client:demo": "node src/pr32_websocket/websocket_client.js --demo"
@@ -18,7 +21,7 @@
     "dotenv": "^16.0.3",
     "exemple-mongodb": "file:",
     "mongodb": "^5.1.0",
-    "xml2js": "^0.5.0",
+    "winston-loki": "^6.1.3",
     "ws": "^8.18.0",
     "winston": "^3.17.0"
   }
