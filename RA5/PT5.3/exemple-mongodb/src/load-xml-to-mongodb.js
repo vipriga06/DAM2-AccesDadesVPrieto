@@ -12,6 +12,12 @@ const REQUIRED_ENV_VARS = [
   'XML_FILE_PATH'
 ];
 
+const LOG = {
+  info: (message) => console.log(`[INFO] ${message}`),
+  warn: (message) => console.log(`[WARN] ${message}`),
+  error: (message, error) => console.error(`[ERROR] ${message}`, error)
+};
+
 function normalizeToArray(value) {
   if (value === undefined || value === null || value === '') {
     return [];
@@ -44,11 +50,6 @@ function getAppConfig() {
   };
 }
 
-/**
- * Llegeix i analitza un fitxer XML de forma asíncrona.
- * @param {string} filePath - Ruta absoluta o relativa de l'arxiu XML.
- * @returns {Promise<Object>} Objecte JavaScript resultant de parsejar l'XML.
- */
 async function parseXMLFile(filePath) {
   try {
     const xmlData = await fs.readFile(filePath, 'utf-8');
@@ -58,105 +59,113 @@ async function parseXMLFile(filePath) {
       mergeAttrs: true
     });
 
-    return await parser.parseStringPromise(xmlData);
+    return parser.parseStringPromise(xmlData);
   } catch (error) {
-    console.error(`Error llegint o analitzant el fitxer XML a ${filePath}:`, error);
+    LOG.error(`Error llegint o analitzant el fitxer XML a ${filePath}:`, error);
     throw error;
   }
 }
 
-/**
- * Processa i transforma les dades parsejades del XML a l'esquema de MongoDB.
- * @param {Object} data - Dades crues obtingudes de xml2js.
- * @returns {Array<Object>} Llista de youtubers llista per a ser inserida.
- */
+function mapVideo(video) {
+  return {
+    videoId: video.id,
+    title: video.title,
+    duration: video.duration,
+    views: parseInteger(video.views),
+    uploadDate: new Date(video.uploadDate),
+    likes: parseInteger(video.likes),
+    comments: parseInteger(video.comments)
+  };
+}
+
+function mapYoutuber(youtuber) {
+  const categories = normalizeToArray(youtuber.categories?.category);
+  const videos = normalizeToArray(youtuber.videos?.video).map(mapVideo);
+
+  return {
+    youtuberId: youtuber.id,
+    channel: youtuber.channel,
+    name: youtuber.name,
+    subscribers: parseInteger(youtuber.subscribers),
+    joinDate: new Date(youtuber.joinDate),
+    categories,
+    videos
+  };
+}
+
 function processYoutuberData(data) {
   if (!data?.youtubers?.youtuber) {
     return [];
   }
 
   const youtubers = normalizeToArray(data.youtubers.youtuber);
-  
-  return youtubers.map(youtuber => {
-    const categories = normalizeToArray(youtuber.categories?.category);
-    const videos = normalizeToArray(youtuber.videos?.video);
-    
-    const processedVideos = videos.map(video => ({
-      videoId: video.id,
-      title: video.title,
-      duration: video.duration,
-      views: parseInteger(video.views),
-      uploadDate: new Date(video.uploadDate),
-      likes: parseInteger(video.likes),
-      comments: parseInteger(video.comments)
-    }));
-    
-    return {
-      youtuberId: youtuber.id,
-      channel: youtuber.channel,
-      name: youtuber.name, 
-      subscribers: parseInteger(youtuber.subscribers),
-      joinDate: new Date(youtuber.joinDate),
-      categories: categories,
-      videos: processedVideos
-    };
-  });
+
+  return youtubers.map(mapYoutuber);
 }
 
-/**
- * Funció principal que coordina la càrrega de dades a MongoDB.
- */
+function buildUpsertOperations(youtubers) {
+  return youtubers.map((youtuber) => ({
+    updateOne: {
+      filter: { youtuberId: youtuber.youtuberId },
+      update: { $set: youtuber },
+      upsert: true
+    }
+  }));
+}
+
+async function saveYoutubers(collection, youtubers) {
+  if (youtubers.length === 0) {
+    LOG.warn('No s\'han trobat dades vàlides per inserir.');
+    return null;
+  }
+
+  LOG.info('Garantint índex únic sobre youtuberId...');
+  await collection.createIndex({ youtuberId: 1 }, { unique: true });
+
+  LOG.info('Inserint o actualitzant dades a MongoDB amb upsert...');
+  const bulkOperations = buildUpsertOperations(youtubers);
+  return collection.bulkWrite(bulkOperations, { ordered: false });
+}
+
+function printResult(result) {
+  if (!result) {
+    return;
+  }
+
+  LOG.info(
+    `${result.upsertedCount} documents creats, ${result.modifiedCount} documents actualitzats i ${result.matchedCount} documents trobats.`
+  );
+}
+
 async function loadDataToMongoDB() {
   const { mongoUri, databaseName, collectionName, xmlFilePath } = getAppConfig();
   const client = new MongoClient(mongoUri);
   
   try {
     await client.connect();
-    console.log('✅ Connectat correctament a MongoDB');
+    LOG.info('Connectat correctament a MongoDB');
     
     const database = client.db(databaseName);
     const collection = database.collection(collectionName);
     
-    console.log('📄 Llegint el fitxer XML...');
+    LOG.info('Llegint el fitxer XML...');
     const xmlData = await parseXMLFile(xmlFilePath);
     
-    console.log('⚙️ Processant les dades...');
+    LOG.info('Processant les dades...');
     const youtubers = processYoutuberData(xmlData);
-    
-    if (youtubers.length === 0) {
-      console.log('⚠️ No s\'han trobat dades vàlides per inserir.');
-      return;
-    }
-    
-    console.log('🔐 Garantint índex únic sobre youtuberId...');
-    await collection.createIndex({ youtuberId: 1 }, { unique: true });
-
-    console.log('💾 Inserint o actualitzant dades a MongoDB amb upsert...');
-    const bulkOperations = youtubers.map((youtuber) => ({
-      updateOne: {
-        filter: { youtuberId: youtuber.youtuberId },
-        update: { $set: youtuber },
-        upsert: true
-      }
-    }));
-
-    const result = await collection.bulkWrite(bulkOperations, { ordered: false });
-
-    console.log(
-      `🎉 ${result.upsertedCount} documents creats, ${result.modifiedCount} documents actualitzats i ${result.matchedCount} documents trobats.`
-    );
+    const result = await saveYoutubers(collection, youtubers);
+    printResult(result);
 
     return result;
   } finally {
     await client.close();
-    console.log('🔌 Connexió a MongoDB tancada');
+    LOG.info('Connexió a MongoDB tancada');
   }
 }
 
-// Bona pràctica: només executar si l'arxiu es crida directament, per permetre ser testejar
 if (require.main === module) {
   loadDataToMongoDB().catch((error) => {
-    console.error('❌ Error general carregant les dades a MongoDB:', error);
+    LOG.error('Error carregant les dades a MongoDB:', error);
     process.exitCode = 1;
   });
 }
