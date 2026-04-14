@@ -1,8 +1,8 @@
-<?xml version="1.0" encoding="UTF-8"?>
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <youtubers>
   <youtuber id="1">
     <channel>TechReviewsXYZ</channel>
-    <name>Maria García</name>
+    <name>Maria Garcia</name>
     <subscribers>5230000</subscribers>
     <joinDate>2015-03-22</joinDate>
     <categories>
@@ -28,10 +28,9 @@
       </video>
     </videos>
   </youtuber>
-  
   <youtuber id="2">
     <channel>CookingWithJoan</channel>
-    <name>Joan Martí</name>
+    <name>Joan Marti</name>
     <subscribers>3870000</subscribers>
     <joinDate>2016-09-14</joinDate>
     <categories>
@@ -57,7 +56,6 @@
       </video>
     </videos>
   </youtuber>
-  
   <youtuber id="3">
     <channel>GamingPro</channel>
     <name>Alex Pujol</name>

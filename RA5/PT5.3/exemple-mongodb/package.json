@@ -4,7 +4,10 @@
   "description": "Exemple de càrrega d'XML a MongoDB",
   "main": "src/load-xml-to-mongodb.js",
   "scripts": {
-    "start": "node src/load-xml-to-mongodb.js",
+    "json-to-xml": "node src/convert-json-to-xml.js",
+    "load-xml": "node src/load-xml-to-mongodb.js",
+    "start": "npm run json-to-xml && npm run load-xml",
+    "pipeline": "npm run start",
     "test": "jest --runInBand"
   },
   "keywords": [

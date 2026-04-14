@@ -1,0 +1,98 @@
+{
+  "youtubers": [
+    {
+      "id": "1",
+      "channel": "TechReviewsXYZ",
+      "name": "Maria Garcia",
+      "subscribers": 5230000,
+      "joinDate": "2015-03-22",
+      "categories": [
+        "Technology",
+        "Reviews"
+      ],
+      "videos": [
+        {
+          "id": "v1001",
+          "title": "10 Best Smartphones of 2024",
+          "duration": "15:42",
+          "views": 3500000,
+          "uploadDate": "2024-02-15",
+          "likes": 278500,
+          "comments": 15230
+        },
+        {
+          "id": "v1002",
+          "title": "Is This the Future of Laptops?",
+          "duration": "12:18",
+          "views": 2100000,
+          "uploadDate": "2024-03-01",
+          "likes": 185000,
+          "comments": 8450
+        }
+      ]
+    },
+    {
+      "id": "2",
+      "channel": "CookingWithJoan",
+      "name": "Joan Marti",
+      "subscribers": 3870000,
+      "joinDate": "2016-09-14",
+      "categories": [
+        "Cooking",
+        "Food"
+      ],
+      "videos": [
+        {
+          "id": "v2001",
+          "title": "Easy 15-Minute Paella Recipe",
+          "duration": "18:27",
+          "views": 2800000,
+          "uploadDate": "2024-01-20",
+          "likes": 205000,
+          "comments": 9800
+        },
+        {
+          "id": "v2002",
+          "title": "Ultimate Catalan Desserts Guide",
+          "duration": "22:54",
+          "views": 1950000,
+          "uploadDate": "2024-02-28",
+          "likes": 154000,
+          "comments": 7250
+        }
+      ]
+    },
+    {
+      "id": "3",
+      "channel": "GamingPro",
+      "name": "Alex Pujol",
+      "subscribers": 7450000,
+      "joinDate": "2014-11-05",
+      "categories": [
+        "Gaming",
+        "Tech",
+        "Entertainment"
+      ],
+      "videos": [
+        {
+          "id": "v3001",
+          "title": "Hidden Easter Eggs in Popular Games",
+          "duration": "25:16",
+          "views": 4200000,
+          "uploadDate": "2024-02-10",
+          "likes": 358000,
+          "comments": 19500
+        },
+        {
+          "id": "v3002",
+          "title": "Gaming Setup Tour 2024",
+          "duration": "19:48",
+          "views": 3250000,
+          "uploadDate": "2024-03-05",
+          "likes": 278000,
+          "comments": 12800
+        }
+      ]
+    }
+  ]
+}
