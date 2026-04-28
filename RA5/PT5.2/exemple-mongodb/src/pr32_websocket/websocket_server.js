@@ -173,8 +173,11 @@ async function runServer() {
         inactivityMs: config.inactivityTimeoutMs
       });
 
+      const finishedPlayerId = session.playerId;
+      const finishedSessionId = session.sessionId;
+
       logger.info(
-        `Partida finalitzada sessionId=${session.sessionId} playerId=${session.playerId} motiu=${reason} distancia=${straightDistance.toFixed(4)}`
+        `Session ended sessionId=${finishedSessionId} playerId=${finishedPlayerId} reason=${reason} distance=${straightDistance.toFixed(4)}`
       );
 
       session = null;
@@ -184,11 +187,19 @@ async function runServer() {
     const resetInactivityTimer = () => {
       clearInactivityTimer();
       inactivityTimer = setTimeout(() => {
+        const hadSession = session !== null;
         finishCurrentSession('inactivity_timeout');
+        logger.info(
+          hadSession
+            ? `Player kicked due to inactivity clientId=${clientId}`
+            : `Client disconnected due to inactivity (no moves sent) clientId=${clientId}`
+        );
+        ws.close(1000, 'inactivity_timeout');
       }, config.inactivityTimeoutMs);
     };
 
-    logger.info(`Client connectat clientId=${clientId} ip=${clientIp}`);
+    logger.info(`Client connected clientId=${clientId} ip=${clientIp}`);
+    resetInactivityTimer();
 
     ws.on('message', async (rawMessage) => {
       try {

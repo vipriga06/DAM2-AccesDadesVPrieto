@@ -26,3 +26,242 @@
 [2026-04-14T16:58:03.074Z] INFO MongoDB connectat a mongodb://root:password@localhost:27017/
 [2026-04-14T16:58:03.075Z] INFO Servidor WebSocket escoltant a ws://127.0.0.1:8082
 [2026-04-14T16:59:50.973Z] INFO Apagant servidor WebSocket
+[2026-04-28T16:55:34.630Z] INFO MongoDB connectat a mongodb://root:password@localhost:27017/
+[2026-04-28T16:55:34.639Z] INFO Servidor WebSocket escoltant a ws://127.0.0.1:8082
+[2026-04-28T16:55:40.770Z] INFO Client connectat clientId=261f24ff-a3ba-40ae-9e2c-bca46f8142c6 ip=127.0.0.1
+[2026-04-28T16:55:46.541Z] INFO Partida iniciada sessionId=4d097151-748d-4c05-b41a-da5ee300792d playerId=player-1
+[2026-04-28T16:55:46.560Z] INFO Moviment guardat sessionId=4d097151-748d-4c05-b41a-da5ee300792d moveIndex=1 x=0 y=1 direction=up
+[2026-04-28T16:55:46.806Z] INFO Moviment guardat sessionId=4d097151-748d-4c05-b41a-da5ee300792d moveIndex=2 x=1 y=1 direction=right
+[2026-04-28T16:55:46.840Z] INFO Moviment guardat sessionId=4d097151-748d-4c05-b41a-da5ee300792d moveIndex=3 x=0 y=1 direction=left
+[2026-04-28T16:55:47.126Z] INFO Moviment guardat sessionId=4d097151-748d-4c05-b41a-da5ee300792d moveIndex=4 x=0 y=0 direction=down
+[2026-04-28T16:55:47.238Z] INFO Moviment guardat sessionId=4d097151-748d-4c05-b41a-da5ee300792d moveIndex=5 x=-1 y=0 direction=left
+[2026-04-28T16:55:47.383Z] INFO Moviment guardat sessionId=4d097151-748d-4c05-b41a-da5ee300792d moveIndex=6 x=0 y=0 direction=right
+[2026-04-28T16:55:47.418Z] INFO Moviment guardat sessionId=4d097151-748d-4c05-b41a-da5ee300792d moveIndex=7 x=0 y=1 direction=up
+[2026-04-28T16:55:47.601Z] INFO Moviment guardat sessionId=4d097151-748d-4c05-b41a-da5ee300792d moveIndex=8 x=0 y=2 direction=up
+[2026-04-28T16:55:48.256Z] INFO Moviment guardat sessionId=4d097151-748d-4c05-b41a-da5ee300792d moveIndex=9 x=1 y=2 direction=right
+[2026-04-28T16:55:48.335Z] INFO Moviment guardat sessionId=4d097151-748d-4c05-b41a-da5ee300792d moveIndex=10 x=0 y=2 direction=left
+[2026-04-28T16:55:48.480Z] INFO Moviment guardat sessionId=4d097151-748d-4c05-b41a-da5ee300792d moveIndex=11 x=1 y=2 direction=right
+[2026-04-28T16:55:48.612Z] INFO Moviment guardat sessionId=4d097151-748d-4c05-b41a-da5ee300792d moveIndex=12 x=1 y=3 direction=up
+[2026-04-28T16:55:48.735Z] INFO Moviment guardat sessionId=4d097151-748d-4c05-b41a-da5ee300792d moveIndex=13 x=2 y=3 direction=right
+[2026-04-28T16:55:48.812Z] INFO Moviment guardat sessionId=4d097151-748d-4c05-b41a-da5ee300792d moveIndex=14 x=1 y=3 direction=left
+[2026-04-28T16:55:48.826Z] INFO Moviment guardat sessionId=4d097151-748d-4c05-b41a-da5ee300792d moveIndex=15 x=1 y=4 direction=up
+[2026-04-28T16:55:48.919Z] INFO Moviment guardat sessionId=4d097151-748d-4c05-b41a-da5ee300792d moveIndex=16 x=2 y=4 direction=right
+[2026-04-28T16:55:49.053Z] INFO Moviment guardat sessionId=4d097151-748d-4c05-b41a-da5ee300792d moveIndex=17 x=2 y=3 direction=down
+[2026-04-28T16:55:49.156Z] INFO Moviment guardat sessionId=4d097151-748d-4c05-b41a-da5ee300792d moveIndex=18 x=3 y=3 direction=right
+[2026-04-28T16:55:49.211Z] INFO Moviment guardat sessionId=4d097151-748d-4c05-b41a-da5ee300792d moveIndex=19 x=3 y=2 direction=down
+[2026-04-28T16:55:49.303Z] INFO Moviment guardat sessionId=4d097151-748d-4c05-b41a-da5ee300792d moveIndex=20 x=4 y=2 direction=right
+[2026-04-28T16:55:49.474Z] INFO Moviment guardat sessionId=4d097151-748d-4c05-b41a-da5ee300792d moveIndex=21 x=3 y=2 direction=left
+[2026-04-28T16:55:49.525Z] INFO Moviment guardat sessionId=4d097151-748d-4c05-b41a-da5ee300792d moveIndex=22 x=3 y=3 direction=up
+[2026-04-28T16:55:49.615Z] INFO Moviment guardat sessionId=4d097151-748d-4c05-b41a-da5ee300792d moveIndex=23 x=4 y=3 direction=right
+[2026-04-28T16:55:49.699Z] INFO Moviment guardat sessionId=4d097151-748d-4c05-b41a-da5ee300792d moveIndex=24 x=3 y=3 direction=left
+[2026-04-28T16:55:49.863Z] INFO Moviment guardat sessionId=4d097151-748d-4c05-b41a-da5ee300792d moveIndex=25 x=4 y=3 direction=right
+[2026-04-28T16:55:49.958Z] INFO Moviment guardat sessionId=4d097151-748d-4c05-b41a-da5ee300792d moveIndex=26 x=4 y=2 direction=down
+[2026-04-28T16:55:50.034Z] INFO Moviment guardat sessionId=4d097151-748d-4c05-b41a-da5ee300792d moveIndex=27 x=5 y=2 direction=right
+[2026-04-28T16:55:50.102Z] INFO Moviment guardat sessionId=4d097151-748d-4c05-b41a-da5ee300792d moveIndex=28 x=5 y=1 direction=down
+[2026-04-28T16:55:50.159Z] INFO Moviment guardat sessionId=4d097151-748d-4c05-b41a-da5ee300792d moveIndex=29 x=4 y=1 direction=left
+[2026-04-28T16:55:50.341Z] INFO Moviment guardat sessionId=4d097151-748d-4c05-b41a-da5ee300792d moveIndex=30 x=4 y=2 direction=up
+[2026-04-28T16:55:50.489Z] INFO Moviment guardat sessionId=4d097151-748d-4c05-b41a-da5ee300792d moveIndex=31 x=3 y=2 direction=left
+[2026-04-28T16:55:50.600Z] INFO Moviment guardat sessionId=4d097151-748d-4c05-b41a-da5ee300792d moveIndex=32 x=4 y=2 direction=right
+[2026-04-28T16:55:50.606Z] INFO Moviment guardat sessionId=4d097151-748d-4c05-b41a-da5ee300792d moveIndex=33 x=4 y=3 direction=up
+[2026-04-28T16:55:50.722Z] INFO Moviment guardat sessionId=4d097151-748d-4c05-b41a-da5ee300792d moveIndex=34 x=3 y=3 direction=left
+[2026-04-28T16:55:50.829Z] INFO Moviment guardat sessionId=4d097151-748d-4c05-b41a-da5ee300792d moveIndex=35 x=3 y=2 direction=down
+[2026-04-28T16:55:50.944Z] INFO Moviment guardat sessionId=4d097151-748d-4c05-b41a-da5ee300792d moveIndex=36 x=4 y=2 direction=right
+[2026-04-28T16:55:51.031Z] INFO Moviment guardat sessionId=4d097151-748d-4c05-b41a-da5ee300792d moveIndex=37 x=3 y=2 direction=left
+[2026-04-28T16:55:51.143Z] INFO Moviment guardat sessionId=4d097151-748d-4c05-b41a-da5ee300792d moveIndex=38 x=3 y=3 direction=up
+[2026-04-28T16:55:51.195Z] INFO Moviment guardat sessionId=4d097151-748d-4c05-b41a-da5ee300792d moveIndex=39 x=4 y=3 direction=right
+[2026-04-28T16:55:51.266Z] INFO Moviment guardat sessionId=4d097151-748d-4c05-b41a-da5ee300792d moveIndex=40 x=3 y=3 direction=left
+[2026-04-28T16:55:51.420Z] INFO Moviment guardat sessionId=4d097151-748d-4c05-b41a-da5ee300792d moveIndex=41 x=4 y=3 direction=right
+[2026-04-28T16:55:51.481Z] INFO Moviment guardat sessionId=4d097151-748d-4c05-b41a-da5ee300792d moveIndex=42 x=4 y=2 direction=down
+[2026-04-28T16:55:51.639Z] INFO Moviment guardat sessionId=4d097151-748d-4c05-b41a-da5ee300792d moveIndex=43 x=3 y=2 direction=left
+[2026-04-28T16:55:51.718Z] INFO Moviment guardat sessionId=4d097151-748d-4c05-b41a-da5ee300792d moveIndex=44 x=3 y=3 direction=up
+[2026-04-28T16:55:51.833Z] INFO Moviment guardat sessionId=4d097151-748d-4c05-b41a-da5ee300792d moveIndex=45 x=4 y=3 direction=right
+[2026-04-28T16:55:51.907Z] INFO Moviment guardat sessionId=4d097151-748d-4c05-b41a-da5ee300792d moveIndex=46 x=3 y=3 direction=left
+[2026-04-28T16:55:52.026Z] INFO Moviment guardat sessionId=4d097151-748d-4c05-b41a-da5ee300792d moveIndex=47 x=3 y=4 direction=up
+[2026-04-28T16:55:52.041Z] INFO Moviment guardat sessionId=4d097151-748d-4c05-b41a-da5ee300792d moveIndex=48 x=4 y=4 direction=right
+[2026-04-28T16:55:52.106Z] INFO Moviment guardat sessionId=4d097151-748d-4c05-b41a-da5ee300792d moveIndex=49 x=3 y=4 direction=left
+[2026-04-28T16:55:52.231Z] INFO Moviment guardat sessionId=4d097151-748d-4c05-b41a-da5ee300792d moveIndex=50 x=3 y=3 direction=down
+[2026-04-28T16:55:52.324Z] INFO Moviment guardat sessionId=4d097151-748d-4c05-b41a-da5ee300792d moveIndex=51 x=4 y=3 direction=right
+[2026-04-28T16:55:52.406Z] INFO Moviment guardat sessionId=4d097151-748d-4c05-b41a-da5ee300792d moveIndex=52 x=3 y=3 direction=left
+[2026-04-28T16:55:52.529Z] INFO Moviment guardat sessionId=4d097151-748d-4c05-b41a-da5ee300792d moveIndex=53 x=3 y=4 direction=up
+[2026-04-28T16:55:52.659Z] INFO Moviment guardat sessionId=4d097151-748d-4c05-b41a-da5ee300792d moveIndex=54 x=2 y=4 direction=left
+[2026-04-28T16:55:52.887Z] INFO Moviment guardat sessionId=4d097151-748d-4c05-b41a-da5ee300792d moveIndex=55 x=3 y=4 direction=right
+[2026-04-28T16:55:52.973Z] INFO Moviment guardat sessionId=4d097151-748d-4c05-b41a-da5ee300792d moveIndex=56 x=2 y=4 direction=left
+[2026-04-28T16:55:53.066Z] INFO Moviment guardat sessionId=4d097151-748d-4c05-b41a-da5ee300792d moveIndex=57 x=3 y=4 direction=right
+[2026-04-28T16:55:53.091Z] INFO Moviment guardat sessionId=4d097151-748d-4c05-b41a-da5ee300792d moveIndex=58 x=3 y=5 direction=up
+[2026-04-28T16:55:53.207Z] INFO Moviment guardat sessionId=4d097151-748d-4c05-b41a-da5ee300792d moveIndex=59 x=2 y=5 direction=left
+[2026-04-28T16:55:54.046Z] INFO Partida finalitzada sessionId=4d097151-748d-4c05-b41a-da5ee300792d playerId=player-1 motiu=client_disconnected distancia=4.4721
+[2026-04-28T16:55:54.046Z] INFO Client desconnectat clientId=261f24ff-a3ba-40ae-9e2c-bca46f8142c6 code=1005 reason=no-reason
+[2026-04-28T17:03:55.767Z] INFO Client connectat clientId=b69c328a-27d7-415a-bd08-807fe82acc45 ip=127.0.0.1
+[2026-04-28T17:04:17.190Z] INFO Client desconnectat clientId=b69c328a-27d7-415a-bd08-807fe82acc45 code=1005 reason=no-reason
+[2026-04-28T17:06:29.806Z] INFO Apagant servidor WebSocket
+[2026-04-28T17:06:36.331Z] INFO MongoDB connectat a mongodb://root:password@localhost:27017/
+[2026-04-28T17:06:36.334Z] INFO Servidor WebSocket escoltant a ws://127.0.0.1:8082
+[2026-04-28T17:06:39.771Z] INFO Client connectat clientId=9ac54b2e-12d4-4eca-94f4-ed5ba809e6ab ip=127.0.0.1
+[2026-04-28T17:08:57.395Z] INFO Apagant servidor WebSocket
+[2026-04-28T17:08:59.953Z] INFO MongoDB connectat a mongodb://root:password@localhost:27017/
+[2026-04-28T17:08:59.955Z] INFO Servidor WebSocket escoltant a ws://127.0.0.1:8082
+[2026-04-28T17:09:03.952Z] INFO Client connectat clientId=43dd1264-35c7-44b7-87f2-e0e391ce37bd ip=127.0.0.1
+[2026-04-28T17:10:04.294Z] INFO Partida iniciada sessionId=3e67221e-1e4c-4264-a3c6-150f300dd9d1 playerId=player-1
+[2026-04-28T17:10:04.297Z] INFO Moviment guardat sessionId=3e67221e-1e4c-4264-a3c6-150f300dd9d1 moveIndex=1 x=0 y=1 direction=up
+[2026-04-28T17:10:14.304Z] INFO Session ended sessionId=3e67221e-1e4c-4264-a3c6-150f300dd9d1 playerId=player-1 reason=inactivity_timeout distance=0.0000
+[2026-04-28T17:10:14.304Z] INFO Player kicked due to inactivity clientId=43dd1264-35c7-44b7-87f2-e0e391ce37bd playerId=player-1
+[2026-04-28T17:10:14.306Z] INFO Client desconnectat clientId=43dd1264-35c7-44b7-87f2-e0e391ce37bd code=1005 reason=no-reason
+[2026-04-28T17:12:23.942Z] INFO Apagant servidor WebSocket
+[2026-04-28T17:25:35.966Z] INFO MongoDB connectat a mongodb://root:password@localhost:27017/
+[2026-04-28T17:25:35.969Z] INFO Servidor WebSocket escoltant a ws://127.0.0.1:8082
+[2026-04-28T17:25:38.165Z] INFO Client connected clientId=932a173f-d848-48ec-abaf-173c18996b1f ip=127.0.0.1
+[2026-04-28T17:25:48.175Z] INFO Client disconnected due to inactivity (no moves sent) clientId=932a173f-d848-48ec-abaf-173c18996b1f
+[2026-04-28T17:25:48.178Z] INFO Client desconnectat clientId=932a173f-d848-48ec-abaf-173c18996b1f code=1000 reason=inactivity_timeout
+[2026-04-28T17:25:57.092Z] INFO Client connected clientId=95493ce3-5032-4c79-aba2-54273cd55af1 ip=127.0.0.1
+[2026-04-28T17:25:59.097Z] INFO Partida iniciada sessionId=7f061ba2-4d6c-4e90-815b-fff2a9101ac7 playerId=player-1
+[2026-04-28T17:25:59.101Z] INFO Moviment guardat sessionId=7f061ba2-4d6c-4e90-815b-fff2a9101ac7 moveIndex=1 x=1 y=0 direction=right
+[2026-04-28T17:25:59.451Z] INFO Moviment guardat sessionId=7f061ba2-4d6c-4e90-815b-fff2a9101ac7 moveIndex=2 x=0 y=0 direction=left
+[2026-04-28T17:25:59.761Z] INFO Moviment guardat sessionId=7f061ba2-4d6c-4e90-815b-fff2a9101ac7 moveIndex=3 x=1 y=0 direction=right
+[2026-04-28T17:25:59.902Z] INFO Moviment guardat sessionId=7f061ba2-4d6c-4e90-815b-fff2a9101ac7 moveIndex=4 x=1 y=1 direction=up
+[2026-04-28T17:26:00.222Z] INFO Moviment guardat sessionId=7f061ba2-4d6c-4e90-815b-fff2a9101ac7 moveIndex=5 x=0 y=1 direction=left
+[2026-04-28T17:26:00.512Z] INFO Moviment guardat sessionId=7f061ba2-4d6c-4e90-815b-fff2a9101ac7 moveIndex=6 x=0 y=0 direction=down
+[2026-04-28T17:26:01.396Z] INFO Moviment guardat sessionId=7f061ba2-4d6c-4e90-815b-fff2a9101ac7 moveIndex=7 x=0 y=1 direction=up
+[2026-04-28T17:26:01.520Z] INFO Moviment guardat sessionId=7f061ba2-4d6c-4e90-815b-fff2a9101ac7 moveIndex=8 x=1 y=1 direction=right
+[2026-04-28T17:26:02.043Z] INFO Moviment guardat sessionId=7f061ba2-4d6c-4e90-815b-fff2a9101ac7 moveIndex=9 x=1 y=0 direction=down
+[2026-04-28T17:26:02.437Z] INFO Moviment guardat sessionId=7f061ba2-4d6c-4e90-815b-fff2a9101ac7 moveIndex=10 x=1 y=-1 direction=down
+[2026-04-28T17:26:02.583Z] INFO Moviment guardat sessionId=7f061ba2-4d6c-4e90-815b-fff2a9101ac7 moveIndex=11 x=2 y=-1 direction=right
+[2026-04-28T17:26:02.985Z] INFO Moviment guardat sessionId=7f061ba2-4d6c-4e90-815b-fff2a9101ac7 moveIndex=12 x=3 y=-1 direction=right
+[2026-04-28T17:26:03.209Z] INFO Moviment guardat sessionId=7f061ba2-4d6c-4e90-815b-fff2a9101ac7 moveIndex=13 x=3 y=0 direction=up
+[2026-04-28T17:26:03.449Z] INFO Moviment guardat sessionId=7f061ba2-4d6c-4e90-815b-fff2a9101ac7 moveIndex=14 x=4 y=0 direction=right
+[2026-04-28T17:26:03.568Z] INFO Moviment guardat sessionId=7f061ba2-4d6c-4e90-815b-fff2a9101ac7 moveIndex=15 x=4 y=1 direction=up
+[2026-04-28T17:26:04.132Z] INFO Moviment guardat sessionId=7f061ba2-4d6c-4e90-815b-fff2a9101ac7 moveIndex=16 x=4 y=0 direction=down
+[2026-04-28T17:26:04.348Z] INFO Moviment guardat sessionId=7f061ba2-4d6c-4e90-815b-fff2a9101ac7 moveIndex=17 x=5 y=0 direction=right
+[2026-04-28T17:26:04.697Z] INFO Moviment guardat sessionId=7f061ba2-4d6c-4e90-815b-fff2a9101ac7 moveIndex=18 x=5 y=1 direction=up
+[2026-04-28T17:26:05.463Z] INFO Moviment guardat sessionId=7f061ba2-4d6c-4e90-815b-fff2a9101ac7 moveIndex=19 x=5 y=0 direction=down
+[2026-04-28T17:26:05.941Z] INFO Moviment guardat sessionId=7f061ba2-4d6c-4e90-815b-fff2a9101ac7 moveIndex=20 x=4 y=0 direction=left
+[2026-04-28T17:26:06.330Z] INFO Moviment guardat sessionId=7f061ba2-4d6c-4e90-815b-fff2a9101ac7 moveIndex=21 x=4 y=1 direction=up
+[2026-04-28T17:26:06.553Z] INFO Moviment guardat sessionId=7f061ba2-4d6c-4e90-815b-fff2a9101ac7 moveIndex=22 x=5 y=1 direction=right
+[2026-04-28T17:26:07.007Z] INFO Moviment guardat sessionId=7f061ba2-4d6c-4e90-815b-fff2a9101ac7 moveIndex=23 x=5 y=2 direction=up
+[2026-04-28T17:26:07.468Z] INFO Moviment guardat sessionId=7f061ba2-4d6c-4e90-815b-fff2a9101ac7 moveIndex=24 x=4 y=2 direction=left
+[2026-04-28T17:26:07.569Z] INFO Moviment guardat sessionId=7f061ba2-4d6c-4e90-815b-fff2a9101ac7 moveIndex=25 x=4 y=1 direction=down
+[2026-04-28T17:26:07.797Z] INFO Moviment guardat sessionId=7f061ba2-4d6c-4e90-815b-fff2a9101ac7 moveIndex=26 x=5 y=1 direction=right
+[2026-04-28T17:26:07.883Z] INFO Moviment guardat sessionId=7f061ba2-4d6c-4e90-815b-fff2a9101ac7 moveIndex=27 x=5 y=2 direction=up
+[2026-04-28T17:26:08.157Z] INFO Moviment guardat sessionId=7f061ba2-4d6c-4e90-815b-fff2a9101ac7 moveIndex=28 x=4 y=2 direction=left
+[2026-04-28T17:26:08.398Z] INFO Moviment guardat sessionId=7f061ba2-4d6c-4e90-815b-fff2a9101ac7 moveIndex=29 x=4 y=1 direction=down
+[2026-04-28T17:26:08.527Z] INFO Moviment guardat sessionId=7f061ba2-4d6c-4e90-815b-fff2a9101ac7 moveIndex=30 x=5 y=1 direction=right
+[2026-04-28T17:26:08.891Z] INFO Moviment guardat sessionId=7f061ba2-4d6c-4e90-815b-fff2a9101ac7 moveIndex=31 x=5 y=2 direction=up
+[2026-04-28T17:26:09.110Z] INFO Moviment guardat sessionId=7f061ba2-4d6c-4e90-815b-fff2a9101ac7 moveIndex=32 x=4 y=2 direction=left
+[2026-04-28T17:26:09.376Z] INFO Moviment guardat sessionId=7f061ba2-4d6c-4e90-815b-fff2a9101ac7 moveIndex=33 x=4 y=1 direction=down
+[2026-04-28T17:26:10.983Z] INFO Moviment guardat sessionId=7f061ba2-4d6c-4e90-815b-fff2a9101ac7 moveIndex=34 x=3 y=1 direction=left
+[2026-04-28T17:26:11.332Z] INFO Moviment guardat sessionId=7f061ba2-4d6c-4e90-815b-fff2a9101ac7 moveIndex=35 x=3 y=2 direction=up
+[2026-04-28T17:26:11.588Z] INFO Moviment guardat sessionId=7f061ba2-4d6c-4e90-815b-fff2a9101ac7 moveIndex=36 x=2 y=2 direction=left
+[2026-04-28T17:26:11.882Z] INFO Moviment guardat sessionId=7f061ba2-4d6c-4e90-815b-fff2a9101ac7 moveIndex=37 x=2 y=1 direction=down
+[2026-04-28T17:26:12.239Z] INFO Moviment guardat sessionId=7f061ba2-4d6c-4e90-815b-fff2a9101ac7 moveIndex=38 x=2 y=0 direction=down
+[2026-04-28T17:26:12.393Z] INFO Moviment guardat sessionId=7f061ba2-4d6c-4e90-815b-fff2a9101ac7 moveIndex=39 x=3 y=0 direction=right
+[2026-04-28T17:26:12.548Z] INFO Moviment guardat sessionId=7f061ba2-4d6c-4e90-815b-fff2a9101ac7 moveIndex=40 x=3 y=1 direction=up
+[2026-04-28T17:26:12.807Z] INFO Moviment guardat sessionId=7f061ba2-4d6c-4e90-815b-fff2a9101ac7 moveIndex=41 x=2 y=1 direction=left
+[2026-04-28T17:26:13.067Z] INFO Moviment guardat sessionId=7f061ba2-4d6c-4e90-815b-fff2a9101ac7 moveIndex=42 x=2 y=0 direction=down
+[2026-04-28T17:26:13.760Z] INFO Moviment guardat sessionId=7f061ba2-4d6c-4e90-815b-fff2a9101ac7 moveIndex=43 x=2 y=1 direction=up
+[2026-04-28T17:26:14.029Z] INFO Moviment guardat sessionId=7f061ba2-4d6c-4e90-815b-fff2a9101ac7 moveIndex=44 x=3 y=1 direction=right
+[2026-04-28T17:26:14.344Z] INFO Moviment guardat sessionId=7f061ba2-4d6c-4e90-815b-fff2a9101ac7 moveIndex=45 x=2 y=1 direction=left
+[2026-04-28T17:26:14.473Z] INFO Moviment guardat sessionId=7f061ba2-4d6c-4e90-815b-fff2a9101ac7 moveIndex=46 x=2 y=0 direction=down
+[2026-04-28T17:26:15.032Z] INFO Moviment guardat sessionId=7f061ba2-4d6c-4e90-815b-fff2a9101ac7 moveIndex=47 x=1 y=0 direction=left
+[2026-04-28T17:26:15.395Z] INFO Moviment guardat sessionId=7f061ba2-4d6c-4e90-815b-fff2a9101ac7 moveIndex=48 x=1 y=1 direction=up
+[2026-04-28T17:26:15.578Z] INFO Moviment guardat sessionId=7f061ba2-4d6c-4e90-815b-fff2a9101ac7 moveIndex=49 x=0 y=1 direction=left
+[2026-04-28T17:26:16.078Z] INFO Moviment guardat sessionId=7f061ba2-4d6c-4e90-815b-fff2a9101ac7 moveIndex=50 x=0 y=0 direction=down
+[2026-04-28T17:26:16.439Z] INFO Moviment guardat sessionId=7f061ba2-4d6c-4e90-815b-fff2a9101ac7 moveIndex=51 x=1 y=0 direction=right
+[2026-04-28T17:26:16.608Z] INFO Moviment guardat sessionId=7f061ba2-4d6c-4e90-815b-fff2a9101ac7 moveIndex=52 x=1 y=1 direction=up
+[2026-04-28T17:26:17.139Z] INFO Moviment guardat sessionId=7f061ba2-4d6c-4e90-815b-fff2a9101ac7 moveIndex=53 x=1 y=2 direction=up
+[2026-04-28T17:26:17.180Z] INFO Moviment guardat sessionId=7f061ba2-4d6c-4e90-815b-fff2a9101ac7 moveIndex=54 x=1 y=3 direction=up
+[2026-04-28T17:26:17.208Z] INFO Moviment guardat sessionId=7f061ba2-4d6c-4e90-815b-fff2a9101ac7 moveIndex=55 x=0 y=3 direction=left
+[2026-04-28T17:26:17.420Z] INFO Moviment guardat sessionId=7f061ba2-4d6c-4e90-815b-fff2a9101ac7 moveIndex=56 x=0 y=2 direction=down
+[2026-04-28T17:26:18.301Z] INFO Moviment guardat sessionId=7f061ba2-4d6c-4e90-815b-fff2a9101ac7 moveIndex=57 x=0 y=1 direction=down
+[2026-04-28T17:26:18.567Z] INFO Moviment guardat sessionId=7f061ba2-4d6c-4e90-815b-fff2a9101ac7 moveIndex=58 x=-1 y=1 direction=left
+[2026-04-28T17:26:18.788Z] INFO Moviment guardat sessionId=7f061ba2-4d6c-4e90-815b-fff2a9101ac7 moveIndex=59 x=-1 y=0 direction=down
+[2026-04-28T17:26:19.207Z] INFO Moviment guardat sessionId=7f061ba2-4d6c-4e90-815b-fff2a9101ac7 moveIndex=60 x=-2 y=0 direction=left
+[2026-04-28T17:26:19.274Z] INFO Moviment guardat sessionId=7f061ba2-4d6c-4e90-815b-fff2a9101ac7 moveIndex=61 x=-2 y=1 direction=up
+[2026-04-28T17:26:19.494Z] INFO Moviment guardat sessionId=7f061ba2-4d6c-4e90-815b-fff2a9101ac7 moveIndex=62 x=-3 y=1 direction=left
+[2026-04-28T17:26:19.654Z] INFO Moviment guardat sessionId=7f061ba2-4d6c-4e90-815b-fff2a9101ac7 moveIndex=63 x=-3 y=0 direction=down
+[2026-04-28T17:26:20.496Z] INFO Moviment guardat sessionId=7f061ba2-4d6c-4e90-815b-fff2a9101ac7 moveIndex=64 x=-3 y=-1 direction=down
+[2026-04-28T17:26:20.898Z] INFO Moviment guardat sessionId=7f061ba2-4d6c-4e90-815b-fff2a9101ac7 moveIndex=65 x=-3 y=-2 direction=down
+[2026-04-28T17:26:21.974Z] INFO Moviment guardat sessionId=7f061ba2-4d6c-4e90-815b-fff2a9101ac7 moveIndex=66 x=-3 y=-3 direction=down
+[2026-04-28T17:26:22.198Z] INFO Moviment guardat sessionId=7f061ba2-4d6c-4e90-815b-fff2a9101ac7 moveIndex=67 x=-4 y=-3 direction=left
+[2026-04-28T17:26:22.257Z] INFO Moviment guardat sessionId=7f061ba2-4d6c-4e90-815b-fff2a9101ac7 moveIndex=68 x=-4 y=-4 direction=down
+[2026-04-28T17:26:22.708Z] INFO Moviment guardat sessionId=7f061ba2-4d6c-4e90-815b-fff2a9101ac7 moveIndex=69 x=-4 y=-3 direction=up
+[2026-04-28T17:26:22.917Z] INFO Moviment guardat sessionId=7f061ba2-4d6c-4e90-815b-fff2a9101ac7 moveIndex=70 x=-3 y=-3 direction=right
+[2026-04-28T17:26:23.096Z] INFO Moviment guardat sessionId=7f061ba2-4d6c-4e90-815b-fff2a9101ac7 moveIndex=71 x=-4 y=-3 direction=left
+[2026-04-28T17:26:23.107Z] INFO Moviment guardat sessionId=7f061ba2-4d6c-4e90-815b-fff2a9101ac7 moveIndex=72 x=-4 y=-4 direction=down
+[2026-04-28T17:26:23.637Z] INFO Moviment guardat sessionId=7f061ba2-4d6c-4e90-815b-fff2a9101ac7 moveIndex=73 x=-4 y=-5 direction=down
+[2026-04-28T17:26:23.790Z] INFO Moviment guardat sessionId=7f061ba2-4d6c-4e90-815b-fff2a9101ac7 moveIndex=74 x=-5 y=-5 direction=left
+[2026-04-28T17:26:24.027Z] INFO Moviment guardat sessionId=7f061ba2-4d6c-4e90-815b-fff2a9101ac7 moveIndex=75 x=-4 y=-5 direction=right
+[2026-04-28T17:26:24.105Z] INFO Moviment guardat sessionId=7f061ba2-4d6c-4e90-815b-fff2a9101ac7 moveIndex=76 x=-4 y=-4 direction=up
+[2026-04-28T17:26:24.269Z] INFO Moviment guardat sessionId=7f061ba2-4d6c-4e90-815b-fff2a9101ac7 moveIndex=77 x=-3 y=-4 direction=right
+[2026-04-28T17:26:24.431Z] INFO Moviment guardat sessionId=7f061ba2-4d6c-4e90-815b-fff2a9101ac7 moveIndex=78 x=-4 y=-4 direction=left
+[2026-04-28T17:26:24.433Z] INFO Moviment guardat sessionId=7f061ba2-4d6c-4e90-815b-fff2a9101ac7 moveIndex=79 x=-4 y=-5 direction=down
+[2026-04-28T17:26:24.984Z] INFO Moviment guardat sessionId=7f061ba2-4d6c-4e90-815b-fff2a9101ac7 moveIndex=80 x=-4 y=-6 direction=down
+[2026-04-28T17:26:25.015Z] INFO Moviment guardat sessionId=7f061ba2-4d6c-4e90-815b-fff2a9101ac7 moveIndex=81 x=-4 y=-7 direction=down
+[2026-04-28T17:26:25.045Z] INFO Moviment guardat sessionId=7f061ba2-4d6c-4e90-815b-fff2a9101ac7 moveIndex=82 x=-4 y=-8 direction=down
+[2026-04-28T17:26:25.076Z] INFO Moviment guardat sessionId=7f061ba2-4d6c-4e90-815b-fff2a9101ac7 moveIndex=83 x=-4 y=-9 direction=down
+[2026-04-28T17:26:25.107Z] INFO Moviment guardat sessionId=7f061ba2-4d6c-4e90-815b-fff2a9101ac7 moveIndex=84 x=-4 y=-10 direction=down
+[2026-04-28T17:26:25.139Z] INFO Moviment guardat sessionId=7f061ba2-4d6c-4e90-815b-fff2a9101ac7 moveIndex=85 x=-4 y=-11 direction=down
+[2026-04-28T17:26:25.181Z] INFO Moviment guardat sessionId=7f061ba2-4d6c-4e90-815b-fff2a9101ac7 moveIndex=86 x=-4 y=-12 direction=down
+[2026-04-28T17:26:25.212Z] INFO Moviment guardat sessionId=7f061ba2-4d6c-4e90-815b-fff2a9101ac7 moveIndex=87 x=-4 y=-13 direction=down
+[2026-04-28T17:26:25.242Z] INFO Moviment guardat sessionId=7f061ba2-4d6c-4e90-815b-fff2a9101ac7 moveIndex=88 x=-4 y=-14 direction=down
+[2026-04-28T17:26:25.274Z] INFO Moviment guardat sessionId=7f061ba2-4d6c-4e90-815b-fff2a9101ac7 moveIndex=89 x=-4 y=-15 direction=down
+[2026-04-28T17:26:25.305Z] INFO Moviment guardat sessionId=7f061ba2-4d6c-4e90-815b-fff2a9101ac7 moveIndex=90 x=-4 y=-16 direction=down
+[2026-04-28T17:26:25.464Z] INFO Moviment guardat sessionId=7f061ba2-4d6c-4e90-815b-fff2a9101ac7 moveIndex=91 x=-4 y=-17 direction=down
+[2026-04-28T17:26:25.703Z] INFO Moviment guardat sessionId=7f061ba2-4d6c-4e90-815b-fff2a9101ac7 moveIndex=92 x=-3 y=-17 direction=right
+[2026-04-28T17:26:25.812Z] INFO Moviment guardat sessionId=7f061ba2-4d6c-4e90-815b-fff2a9101ac7 moveIndex=93 x=-3 y=-18 direction=down
+[2026-04-28T17:26:25.838Z] INFO Moviment guardat sessionId=7f061ba2-4d6c-4e90-815b-fff2a9101ac7 moveIndex=94 x=-4 y=-18 direction=left
+[2026-04-28T17:26:26.309Z] INFO Moviment guardat sessionId=7f061ba2-4d6c-4e90-815b-fff2a9101ac7 moveIndex=95 x=-3 y=-18 direction=right
+[2026-04-28T17:26:26.354Z] INFO Moviment guardat sessionId=7f061ba2-4d6c-4e90-815b-fff2a9101ac7 moveIndex=96 x=-3 y=-19 direction=down
+[2026-04-28T17:26:26.434Z] INFO Moviment guardat sessionId=7f061ba2-4d6c-4e90-815b-fff2a9101ac7 moveIndex=97 x=-2 y=-19 direction=right
+[2026-04-28T17:26:26.766Z] INFO Moviment guardat sessionId=7f061ba2-4d6c-4e90-815b-fff2a9101ac7 moveIndex=98 x=-2 y=-18 direction=up
+[2026-04-28T17:26:26.985Z] INFO Moviment guardat sessionId=7f061ba2-4d6c-4e90-815b-fff2a9101ac7 moveIndex=99 x=-3 y=-18 direction=left
+[2026-04-28T17:26:27.197Z] INFO Moviment guardat sessionId=7f061ba2-4d6c-4e90-815b-fff2a9101ac7 moveIndex=100 x=-3 y=-19 direction=down
+[2026-04-28T17:26:27.729Z] INFO Moviment guardat sessionId=7f061ba2-4d6c-4e90-815b-fff2a9101ac7 moveIndex=101 x=-3 y=-20 direction=down
+[2026-04-28T17:26:27.758Z] INFO Moviment guardat sessionId=7f061ba2-4d6c-4e90-815b-fff2a9101ac7 moveIndex=102 x=-3 y=-21 direction=down
+[2026-04-28T17:26:27.789Z] INFO Moviment guardat sessionId=7f061ba2-4d6c-4e90-815b-fff2a9101ac7 moveIndex=103 x=-3 y=-22 direction=down
+[2026-04-28T17:26:27.835Z] INFO Moviment guardat sessionId=7f061ba2-4d6c-4e90-815b-fff2a9101ac7 moveIndex=104 x=-3 y=-23 direction=down
+[2026-04-28T17:26:27.877Z] INFO Moviment guardat sessionId=7f061ba2-4d6c-4e90-815b-fff2a9101ac7 moveIndex=105 x=-3 y=-24 direction=down
+[2026-04-28T17:26:27.906Z] INFO Moviment guardat sessionId=7f061ba2-4d6c-4e90-815b-fff2a9101ac7 moveIndex=106 x=-3 y=-25 direction=down
+[2026-04-28T17:26:27.936Z] INFO Moviment guardat sessionId=7f061ba2-4d6c-4e90-815b-fff2a9101ac7 moveIndex=107 x=-3 y=-26 direction=down
+[2026-04-28T17:26:27.967Z] INFO Moviment guardat sessionId=7f061ba2-4d6c-4e90-815b-fff2a9101ac7 moveIndex=108 x=-3 y=-27 direction=down
+[2026-04-28T17:26:27.997Z] INFO Moviment guardat sessionId=7f061ba2-4d6c-4e90-815b-fff2a9101ac7 moveIndex=109 x=-3 y=-28 direction=down
+[2026-04-28T17:26:28.027Z] INFO Moviment guardat sessionId=7f061ba2-4d6c-4e90-815b-fff2a9101ac7 moveIndex=110 x=-3 y=-29 direction=down
+[2026-04-28T17:26:28.058Z] INFO Moviment guardat sessionId=7f061ba2-4d6c-4e90-815b-fff2a9101ac7 moveIndex=111 x=-3 y=-30 direction=down
+[2026-04-28T17:26:28.088Z] INFO Moviment guardat sessionId=7f061ba2-4d6c-4e90-815b-fff2a9101ac7 moveIndex=112 x=-3 y=-31 direction=down
+[2026-04-28T17:26:28.118Z] INFO Moviment guardat sessionId=7f061ba2-4d6c-4e90-815b-fff2a9101ac7 moveIndex=113 x=-3 y=-32 direction=down
+[2026-04-28T17:26:28.148Z] INFO Moviment guardat sessionId=7f061ba2-4d6c-4e90-815b-fff2a9101ac7 moveIndex=114 x=-3 y=-33 direction=down
+[2026-04-28T17:26:28.179Z] INFO Moviment guardat sessionId=7f061ba2-4d6c-4e90-815b-fff2a9101ac7 moveIndex=115 x=-3 y=-34 direction=down
+[2026-04-28T17:26:28.209Z] INFO Moviment guardat sessionId=7f061ba2-4d6c-4e90-815b-fff2a9101ac7 moveIndex=116 x=-3 y=-35 direction=down
+[2026-04-28T17:26:28.240Z] INFO Moviment guardat sessionId=7f061ba2-4d6c-4e90-815b-fff2a9101ac7 moveIndex=117 x=-3 y=-36 direction=down
+[2026-04-28T17:26:28.269Z] INFO Moviment guardat sessionId=7f061ba2-4d6c-4e90-815b-fff2a9101ac7 moveIndex=118 x=-3 y=-37 direction=down
+[2026-04-28T17:26:28.428Z] INFO Moviment guardat sessionId=7f061ba2-4d6c-4e90-815b-fff2a9101ac7 moveIndex=119 x=-3 y=-38 direction=down
+[2026-04-28T17:26:28.431Z] INFO Moviment guardat sessionId=7f061ba2-4d6c-4e90-815b-fff2a9101ac7 moveIndex=120 x=-4 y=-38 direction=left
+[2026-04-28T17:26:28.788Z] INFO Moviment guardat sessionId=7f061ba2-4d6c-4e90-815b-fff2a9101ac7 moveIndex=121 x=-3 y=-38 direction=right
+[2026-04-28T17:26:28.980Z] INFO Moviment guardat sessionId=7f061ba2-4d6c-4e90-815b-fff2a9101ac7 moveIndex=122 x=-3 y=-37 direction=up
+[2026-04-28T17:26:29.344Z] INFO Moviment guardat sessionId=7f061ba2-4d6c-4e90-815b-fff2a9101ac7 moveIndex=123 x=-3 y=-38 direction=down
+[2026-04-28T17:26:29.462Z] INFO Moviment guardat sessionId=7f061ba2-4d6c-4e90-815b-fff2a9101ac7 moveIndex=124 x=-4 y=-38 direction=left
+[2026-04-28T17:26:30.786Z] INFO Moviment guardat sessionId=7f061ba2-4d6c-4e90-815b-fff2a9101ac7 moveIndex=125 x=-4 y=-39 direction=down
+[2026-04-28T17:26:32.344Z] INFO Moviment guardat sessionId=7f061ba2-4d6c-4e90-815b-fff2a9101ac7 moveIndex=126 x=-4 y=-40 direction=down
+[2026-04-28T17:26:32.631Z] INFO Moviment guardat sessionId=7f061ba2-4d6c-4e90-815b-fff2a9101ac7 moveIndex=127 x=-3 y=-40 direction=right
+[2026-04-28T17:26:32.794Z] INFO Moviment guardat sessionId=7f061ba2-4d6c-4e90-815b-fff2a9101ac7 moveIndex=128 x=-4 y=-40 direction=left
+[2026-04-28T17:26:32.991Z] INFO Moviment guardat sessionId=7f061ba2-4d6c-4e90-815b-fff2a9101ac7 moveIndex=129 x=-3 y=-40 direction=right
+[2026-04-28T17:26:33.154Z] INFO Moviment guardat sessionId=7f061ba2-4d6c-4e90-815b-fff2a9101ac7 moveIndex=130 x=-3 y=-39 direction=up
+[2026-04-28T17:26:33.373Z] INFO Moviment guardat sessionId=7f061ba2-4d6c-4e90-815b-fff2a9101ac7 moveIndex=131 x=-4 y=-39 direction=left
+[2026-04-28T17:26:33.536Z] INFO Moviment guardat sessionId=7f061ba2-4d6c-4e90-815b-fff2a9101ac7 moveIndex=132 x=-4 y=-40 direction=down
+[2026-04-28T17:26:33.926Z] INFO Moviment guardat sessionId=7f061ba2-4d6c-4e90-815b-fff2a9101ac7 moveIndex=133 x=-3 y=-40 direction=right
+[2026-04-28T17:26:34.306Z] INFO Moviment guardat sessionId=7f061ba2-4d6c-4e90-815b-fff2a9101ac7 moveIndex=134 x=-3 y=-41 direction=down
+[2026-04-28T17:26:34.466Z] INFO Moviment guardat sessionId=7f061ba2-4d6c-4e90-815b-fff2a9101ac7 moveIndex=135 x=-2 y=-41 direction=right
+[2026-04-28T17:26:35.084Z] INFO Moviment guardat sessionId=7f061ba2-4d6c-4e90-815b-fff2a9101ac7 moveIndex=136 x=-2 y=-42 direction=down
+[2026-04-28T17:26:36.081Z] INFO Moviment guardat sessionId=7f061ba2-4d6c-4e90-815b-fff2a9101ac7 moveIndex=137 x=-2 y=-43 direction=down
+[2026-04-28T17:26:44.358Z] INFO Session ended sessionId=7f061ba2-4d6c-4e90-815b-fff2a9101ac7 playerId=player-1 reason=client_disconnected distance=43.1045
+[2026-04-28T17:26:44.359Z] INFO Client desconnectat clientId=95493ce3-5032-4c79-aba2-54273cd55af1 code=1005 reason=no-reason
+[2026-04-28T17:29:29.183Z] INFO Client connected clientId=599013f0-3e8c-4a30-bcdc-2c0bf299c92f ip=127.0.0.1
+[2026-04-28T17:29:32.115Z] INFO Partida iniciada sessionId=86d78c7b-c21b-424c-9fc3-fc51a5c35e83 playerId=player-1
+[2026-04-28T17:29:32.117Z] INFO Moviment guardat sessionId=86d78c7b-c21b-424c-9fc3-fc51a5c35e83 moveIndex=1 x=1 y=0 direction=right
+[2026-04-28T17:29:32.959Z] INFO Moviment guardat sessionId=86d78c7b-c21b-424c-9fc3-fc51a5c35e83 moveIndex=2 x=2 y=0 direction=right
+[2026-04-28T17:29:33.964Z] INFO Moviment guardat sessionId=86d78c7b-c21b-424c-9fc3-fc51a5c35e83 moveIndex=3 x=1 y=0 direction=left
+[2026-04-28T17:29:34.162Z] INFO Moviment guardat sessionId=86d78c7b-c21b-424c-9fc3-fc51a5c35e83 moveIndex=4 x=0 y=0 direction=left
+[2026-04-28T17:29:35.114Z] INFO Moviment guardat sessionId=86d78c7b-c21b-424c-9fc3-fc51a5c35e83 moveIndex=5 x=0 y=1 direction=up
+[2026-04-28T17:29:35.327Z] INFO Moviment guardat sessionId=86d78c7b-c21b-424c-9fc3-fc51a5c35e83 moveIndex=6 x=0 y=2 direction=up
+[2026-04-28T17:29:35.547Z] INFO Moviment guardat sessionId=86d78c7b-c21b-424c-9fc3-fc51a5c35e83 moveIndex=7 x=0 y=3 direction=up
+[2026-04-28T17:29:39.370Z] INFO Session ended sessionId=86d78c7b-c21b-424c-9fc3-fc51a5c35e83 playerId=player-1 reason=client_disconnected distance=3.1623
+[2026-04-28T17:29:39.370Z] INFO Client desconnectat clientId=599013f0-3e8c-4a30-bcdc-2c0bf299c92f code=1005 reason=no-reason
+    

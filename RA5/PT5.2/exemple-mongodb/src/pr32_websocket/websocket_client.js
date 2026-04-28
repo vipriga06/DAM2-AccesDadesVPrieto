@@ -104,10 +104,10 @@ function startClient() {
         );
       } else if (payload.type === 'session_ended') {
         process.stdout.write(
-          `Servidor: partida finalitzada (${payload.reason}). Distancia recta: ${payload.straightDistance.toFixed(4)}\n`
+          `Server: session ended (${payload.reason}). Straight distance: ${payload.straightDistance.toFixed(4)}\n`
         );
 
-        if (isDemo) {
+        if (isDemo || payload.reason === 'inactivity_timeout') {
           ws.close();
         }
       } else if (payload.type === 'error') {
@@ -121,11 +121,8 @@ function startClient() {
   });
 
   ws.on('close', () => {
-    process.stdout.write('Connexio tancada\n');
-
-    if (isDemo) {
-      process.exit(0);
-    }
+    process.stdout.write('Connection closed\n');
+    process.exit(0);
   });
 
   ws.on('error', (error) => {
